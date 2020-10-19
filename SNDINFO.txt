@@ -49,6 +49,12 @@ grenlncr/fire GRENFIR1
 grenlncr/clipout GRENREL1
 grenlncr/clipin GRENREL2
 
+//Sniper Rifle
+sniper/fire SNIPFIR1
+sniper/clipout GRENREL1
+sniper/clipin GRENREL2
+sniper/cock SNIPCOC1
+
 //Grenade
 grenade/explosion GRENEXP1
 grenade/bounce GRENBN1
