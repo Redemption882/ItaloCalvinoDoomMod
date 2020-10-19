@@ -1,0 +1,21 @@
+
+//WEAPONS
+#include decorate/Glock18.txt
+#include decorate/AA12.txt
+#include decorate/DBSG.txt
+#include decorate/AK47.txt
+#include decorate/M60.txt
+#include decorate/GrenadeLauncher.txt
+#include decorate/SniperRifle.txt
+
+//MISC
+#include decorate/CasingSpawners.txt
+#include decorate/Spark&Puff.txt
+#include decorate/CustomDoomPlayer.txt
+#include decorate/Tokens.txt
+
+//PROJECTILES
+#include decorate/GrenProjectile.txt
+
+//WEAPON SPAWNER
+#include decorate/WeaponSpawners.txt

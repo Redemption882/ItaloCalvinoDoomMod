@@ -1,0 +1,10 @@
+//Class section
+clearplayerclasses 
+addplayerclass CustomDoomPlayer
+
+//Key section
+addkeysection "Custom keys" ItaloCalvinoDoomMod
+AddMenuKey "Alternate Fire Mode" +altfiremode
+Alias +altfiremode "Use Action_FireMode" // + events occur when the key is pressed.
+Alias -altfiremode "Use Action_FireModeCancel" // - events occur when the key is released.
+DefaultBind x +altfiremode // only the + event needs to be bound.
