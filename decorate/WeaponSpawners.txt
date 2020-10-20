@@ -105,3 +105,21 @@ ACTOR GLSpawner : CustomInventory Replaces RocketLauncher
    Fail
    }
 }
+
+ACTOR SniperRifleSpawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the Sniper Rifle!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.0
+   States 
+   { 
+   Spawn: 
+   GLMM A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("SniperRifle", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}

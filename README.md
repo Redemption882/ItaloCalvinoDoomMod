@@ -13,6 +13,7 @@ Per spawnare mostri bisogna aprire la console del gioco e usare il commando "sum
    ak47spawner<br>
    m60spawner<br>
    grenadelauncherspawner<br>
+   sniperriflespawner<br>
 <br><h3>Per spawnarli utilizzare il comando "summon" (es. "summon glock18spawner").</h3>
 <h1># 4: Come far partire la mod su GZDoom:</h1>
 <h4>Scaricare e trasportare il file "ItaloCalvnoDoomMod-master.zip" sull'icona di GZDoom</h4>
