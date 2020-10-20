@@ -54,6 +54,7 @@ sniper/fire SNIPFIR1
 sniper/clipout GRENREL1
 sniper/clipin GRENREL2
 sniper/cock SNIPCOC1
+sniper/scope SNIPSCP1
 
 //Grenade
 grenade/explosion GRENEXP1
