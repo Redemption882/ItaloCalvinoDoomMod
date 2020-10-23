@@ -1,8 +1,8 @@
 # ItaloCalvinoDoomMod
 Sweg
 # 1: Che source port utilizzare per testare la mod?:
-La mod al momento è compatibile con GZDoom e Zandronum 3.0
-GZDoom: https://zdoom.org/downloads
+La mod al momento è compatibile con GZDoom e Zandronum 3.0<br>
+GZDoom: https://zdoom.org/downloads<br>
 Zandronum 3.0: https://zandronum.com/download
 # 2: Come faccio a spawnare oggetti, mostri, ecc...?:
 Per spawnare mostri bisogna aprire la console del gioco e usare il commando "summon nomedelloggetto".<br> 
