@@ -34,8 +34,6 @@ ACTOR BulletSpark
   }
 }
 
-}
-
 ACTOR CustomPuff
 {
   +NOBLOCKMAP
