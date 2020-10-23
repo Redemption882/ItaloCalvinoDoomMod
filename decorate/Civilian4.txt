@@ -1,6 +1,5 @@
-ACTOR Civilian4 65
+ACTOR Civilian4 Replaces ShotgunGuy
 {
-  SpawnID 2
   Health 60
   PainChance 200
   Speed 18

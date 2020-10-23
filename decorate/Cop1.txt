@@ -1,6 +1,5 @@
-ACTOR Cop1 3002
+ACTOR Cop1 Replaces Demon
 {
-  SpawnID 8
   Health 60
   Radius 20
   Height 56

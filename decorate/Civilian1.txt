@@ -1,6 +1,5 @@
-ACTOR Civilian1 3004
+ACTOR Civilian1 Replaces ZombieMan
 {
-  SpawnID 4
   Health 60
   PainChance 200
   Speed 18
@@ -19,7 +18,7 @@ ACTOR Civilian1 3004
    n00b A 10 a_look
    Goto See
   See:
-   n00b ABCD 1 a_chase
+   n00b AABBCCDD 3 a_chase
    Goto Spawn
   Pain:
    n00b a 3
