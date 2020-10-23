@@ -38,7 +38,7 @@ ACTOR AK47 : Weapon
       TNT1 A 0 
       Goto DeselectAnim
     DeselectAnim:
-      TNT1 A 0 A_StartSound ("weapon/inventory")
+      TNT1 A 0 A_PlaySound ("weapon/inventory")
       AK47 A 1
       AKEF ABCDEFGH 1
       Goto DeselectEnd
@@ -50,26 +50,26 @@ ACTOR AK47 : Weapon
       TNT1 AAAAAAAAAAAAAA 00 A_Raise
       Goto SelectAnim	 
     SelectAnim:
-      TNT1 A 0 A_StartSound ("weapon/inventory")
+      TNT1 A 0 A_PlaySound ("weapon/inventory")
       AKEF HGFEDCBA 1
       AKRE ABCDE 1
       AKRE F 5
-      TNT1 A 0 A_StartSound ("ak47/bolt")
+      TNT1 A 0 A_PlaySound ("ak47/bolt")
       AKRE GH 1
       AKRE H 5
-      TNT1 A 0 A_StartSound ("ak47/bolt2")
+      TNT1 A 0 A_PlaySound ("ak47/bolt2")
       AKRE GF 1
       AKRE EDCBA 1
       Goto Ready
     AltAltFire:
       TNT1 A 0 A_TakeInventory("FireSel",1)
-      TNT1 A 0 A_StartSound ("weapon/firemode")
+      TNT1 A 0 A_PlaySound ("weapon/firemode")
       TNT1 A 0 A_JumpIFInventory("AKBurstFire", 0, "StopAlt")
       TNT1 A 0 A_GiveInventory("AKBurstFire",1)
       TNT1 A 0 A_Print("Burst fire")
       Goto Ready		
     StopAlt:
-      TNT1 A 0 A_StartSound ("weapon/firemode")
+      TNT1 A 0 A_PlaySound ("weapon/firemode")
       TNT1 A 0 A_TakeInventory("AKBurstFire",1)
       TNT1 A 0 A_Print("Full Auto")
       Goto Ready
@@ -127,7 +127,7 @@ ACTOR AK47 : Weapon
     ReloadWork:
       AKRE ABCDE 1
       AKRE F 5
-      TNT1 A 0 A_StartSound ("ak47/bolt")
+      TNT1 A 0 A_PlaySound ("ak47/bolt")
       AKRE GH 1
       AKRE H 5
       AKRE IJK 1
@@ -136,7 +136,7 @@ ACTOR AK47 : Weapon
       AKRL CDEFGHI 1
       AKRL J 5
       AKRL K 1
-      TNT1 A 0 A_StartSound ("ak47/clipout")
+      TNT1 A 0 A_PlaySound ("ak47/clipout")
       AKRL LMNOP 1
       TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
       AKRL P 11
@@ -144,14 +144,14 @@ ACTOR AK47 : Weapon
       AKRB J 1
       AKRL RS 1
       AKRL Z 1
-      TNT1 A 0 A_StartSound ("ak47/clipin")
+      TNT1 A 0 A_PlaySound ("ak47/clipin")
       AKRL Y 1
       AKRL KJIHGFEDC 1
       AKRB A 1
       AKRL BA 1
       AKRE KJIH 1
       AKRE H 5
-      TNT1 A 0 A_StartSound ("ak47/bolt2")
+      TNT1 A 0 A_PlaySound ("ak47/bolt2")
       AKRE GF 1
       AKRE F 5
       AKRE EDCBA 1
@@ -167,7 +167,7 @@ ACTOR AK47 : Weapon
     NoAmmo:
       TNT1 A 0 A_JumpIfInventory("AKClip", 30, 2)
       TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
-      TNT1 A 0 A_StartSound ("weapon/noammo")
+      TNT1 A 0 A_PlaySound ("weapon/noammo")
       Goto Ready 
     Flash:
       TNT1 A 4 Bright A_Light1

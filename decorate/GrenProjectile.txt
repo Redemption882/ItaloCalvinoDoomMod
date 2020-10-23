@@ -16,7 +16,7 @@ ACTOR GrenProj
 		SHRP O 3
 		Loop
 	  Death:
-	    TNT1 A 0 A_StartSound("grenade/explosion")
+	    TNT1 A 0 A_PlaySound("grenade/explosion")
 		TNT1 A 0 A_AlertMonsters
 		MIS6 B 0 A_NoGravity
 		MIS6 B 2 bright A_SetTranslucent (0.85,1)
@@ -75,7 +75,7 @@ ACTOR GrenProjTimed
 		TNT1 A 0 A_Countdown
 		Loop
 	  Death:
-	    TNT1 A 0 A_StartSound("grenade/explosion")
+	    TNT1 A 0 A_PlaySound("grenade/explosion")
 		TNT1 A 0 A_AlertMonsters
 		MIS6 B 0 A_NoGravity
 		MIS6 B 2 bright A_SetTranslucent (0.85,1)

@@ -292,7 +292,7 @@ ACTOR EmptyClip
    States
    {
    Spawn:
-      TNT1 A 7 A_StartSound("NULL")
+      TNT1 A 7 A_PlaySound("NULL")
       ECLI ABCDEFGH 4
       Loop
    Death:
@@ -359,7 +359,7 @@ ACTOR GLEmptyClip
    States
    {
    Spawn:
-      TNT1 A 7 A_StartSound("NULL")
+      TNT1 A 7 A_PlaySound("NULL")
       RCSE ABCDEFGH 4
       Loop
    Death:
