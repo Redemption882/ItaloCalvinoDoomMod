@@ -1,0 +1,36 @@
+ACTOR Civilian2 3001
+{
+  SpawnID 5
+  Health 60
+  PainChance 200
+  Speed 18
+  Radius 20
+  Height 56
+  Monster
+  +FRIGHTENED
+  scale 0.37
+ +DROPOFF
+  MaxStepHeight 55
+  MaxDropoffHeight 32
+  DeathSound "woman/death"
+  States
+  {
+  Spawn:
+   civ1 A 10 a_look
+   Goto See
+  See:
+    civ1 ABCD 3 a_chase
+    Goto Spawn
+  Pain:
+    civ1 a 3
+    civ1 a 3 A_Pain
+    Goto see
+  Death:
+    civ1 j 5 a_die
+	civ1 k 5 
+    civ1 l 5 A_Scream
+	civ1 mn 1 A_NoBlocking
+    civ1 o -1
+    Stop
+  }
+}

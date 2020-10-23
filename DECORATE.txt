@@ -19,3 +19,11 @@
 
 //WEAPON SPAWNER
 #include decorate/WeaponSpawners.txt
+
+//ENEMIES
+#include decorate/Civilian1.txt
+#include decorate/Civilian2.txt
+#include decorate/Civilian3.txt
+#include decorate/Civilian4.txt
+#include decorate/Cop1.txt
+#include decorate/Cop2.txt
