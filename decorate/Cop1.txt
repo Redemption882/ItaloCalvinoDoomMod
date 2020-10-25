@@ -13,9 +13,9 @@ ACTOR Cop1 Replaces Demon
   SeeSound "cop/sight"
   AttackSound "cop/attack"
   DeathSound "cop/death"
-    Obituary "%o was shot by a cop."
-    HitObituary "%o is under arrest."
-	Dropitem "WhitePistol"
+  Obituary "%o was shot by a cop."
+  HitObituary "%o is under arrest."
+  Dropitem "Glock18"
   States
   {
   Spawn:
@@ -27,7 +27,7 @@ ACTOR Cop1 Replaces Demon
   Missile:
     FCP2 E 10 A_FaceTarget
 	TNT1 A 0 A_PlaySound ("cop/attack")
-	TNT1 A 0 A_CustomBulletAttack(13, 2, 1, random(1,5) * 3, "BulletPuff", 0, CBAF_NORANDOM)
+	TNT1 A 0 A_CustomBulletAttack(13, 2, 1, random(1,5) * 3, "BulletSpark", 0, CBAF_NORANDOM)
 	TNT1 A 0 A_SpawnItem ("PistolCasingSpawner", 0, 30,0)
     FCP2 F 10 Bright A_SPosAttackUseAtkSound
     FCP2 E 10
