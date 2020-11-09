@@ -13,6 +13,15 @@ MELEEWL1 MELEEWL1
 MELEEWL2 MELEEWL2
 MELEEWL3 MELEEWL3
 
+//Shotgun
+pumpshotgun/fire STGFIRE1
+$limit pumpshotgun/fire 0
+pumpshotgun/cockin STGCOCK1
+$limit pumpshotgun/cockin 0
+pumpshotgun/cockout STGCOCK2
+$limit pumpshotgun/cockout 0
+pumpshotgun/shellin SHELLIN1
+
 //aa12
 aa12/fire DSAA12
 aa12/bolt AA12BOLT
@@ -25,6 +34,12 @@ dbsg/fire SSGFIR1
 dbsg/open SSGOP1
 dbsg/reload SSGRL1
 dbsg/close SSGCL1
+
+//p50
+p50/fire P50FIRE
+p50/cock P50COCK
+p50/clipin DSGLKIN2
+p50/clipout DSGLKOU2
 
 //glock18
 glock18/fire DSGLOCK1
@@ -43,6 +58,15 @@ ak47/clipin AKINSERT
 m60/fire M60FIRE
 m60/ready M60RDY
 m60/reloadseq M60REL
+
+//minigun
+minigun/fire MGNFIR1
+minigun/ready MGNRDY1
+minigun/clipout MGNREL1
+minigun/clipin GRENREL2
+minigun/spinstart MGNSTRT
+minigun/spinloop MGNSPIN
+minigun/spinstop MGNSTOP
 
 //Grenade Launcher
 grenlncr/fire GRENFIR1
@@ -103,6 +127,9 @@ RICOCHE8 RICOCHE8
 
 //COPS SOUNDS
 
+enemy/reload ENMREL
+$limit enemy/reload 0
+
 $random cop/sight { DCOPSIT1  DCOPSIT2  DCOPSIT3   DCOPSIT4   DCOPSIT5   DCOPSIT6   DCOPSIT7  DCOPSIT8  DCOPSIT9 }
 DCOPSIT1	DCOPSIT1	
 DCOPSIT2	DCOPSIT2
@@ -123,12 +150,25 @@ DSCOPTH5 DSCOPTH5
 DSCOPTH6 DSCOPTH6
 DSCOPTH7 DSCOPTH7
 
-cop/attack  DSGLOCK1
+cop/pain DCOPPAIN1
+$limit cop/pain 0
+cop/attack  P50FIRE
+$limit cop/attack 0
+minigunmarine/attack MGNFIR1
+$limit minigunmarine/attack 0
+shotgunmarine/attack STGFIRE1
+$limit shotgunmarine/attack 0
 
 //CIVILIANS SOUNDS
 
-$random man/death { TWAT1 TWAT2 TWAT3 TWAT4 TWAT5 TWAT6 TWAT7 }
+$random man/alert { MALERT1 MALERT2 }
+MALERT1 MALERT1
+MALERT2 MALERT2
 
+man/active MACTIVE
+$limit man/active 0
+
+$random man/death { TWAT1 TWAT2 TWAT3 TWAT4 TWAT5 TWAT6 TWAT7 }
 TWAT1 TWAT1
 TWAT2 TWAT2
 TWAT3 TWAT3
@@ -137,8 +177,15 @@ TWAT5 TWAT5
 TWAT6 TWAT6
 TWAT7 TWAT7
 
-$random woman/death { BITCH1 BITCH2 }
+$random woman/alert { FALERT1 FALERT3 FALERT4 FALERT5 }
+FALERT1 FALERT1
+FALERT3 FALERT3
+FALERT4 FALERT4
+FALERT5 FALERT5
 
+woman/active FACTIVE
+
+$random woman/death { BITCH1 BITCH2 }
 BITCH1 BITCH1
 BITCH2 BITCH2
 
