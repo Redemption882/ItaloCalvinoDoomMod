@@ -1,27 +1,17 @@
 
 //WEAPONS
 #include decorate/Glock18.txt
-#include decorate/P50.txt
 #include decorate/AA12.txt
-#include decorate/PumpShotgun.txt
 #include decorate/DBSG.txt
 #include decorate/AK47.txt
 #include decorate/M60.txt
-#include decorate/Minigun.txt
 #include decorate/GrenadeLauncher.txt
 #include decorate/SniperRifle.txt
-
-//PLAYER CLASSES
-#include decorate/RiflemanPlayer.txt
-#include decorate/ShotgunnerPlayer.txt
-#include decorate/MachinegunnerPlayer.txt
-#include decorate/MinigunnerPlayer.txt
-#include decorate/GrenadierPlayer.txt
-#include decorate/SniperPlayer.txt
 
 //MISC
 #include decorate/CasingSpawners.txt
 #include decorate/Spark&Puff.txt
+#include decorate/CustomDoomPlayer.txt
 #include decorate/Tokens.txt
 
 //PROJECTILES
@@ -30,15 +20,10 @@
 //WEAPON SPAWNER
 #include decorate/WeaponSpawners.txt
 
-//CIVILIANS
+//ENEMIES
 #include decorate/Civilian1.txt
 #include decorate/Civilian2.txt
 #include decorate/Civilian3.txt
 #include decorate/Civilian4.txt
-#include decorate/Capezio.txt
-
-//ENEMIES
 #include decorate/Cop1.txt
 #include decorate/Cop2.txt
-#include decorate/MinigunMarine.txt
-#include decorate/ShotgunMarine.txt
