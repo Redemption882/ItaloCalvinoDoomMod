@@ -1,0 +1,47 @@
+
+//WEAPONS
+#include decorate/Glock18.txt
+#include decorate/P50.txt
+#include decorate/AA12.txt
+#include decorate/PumpShotgun.txt
+#include decorate/DBSG.txt
+#include decorate/AK47.txt
+#include decorate/M60.txt
+#include decorate/Minigun.txt
+#include decorate/GrenadeLauncher.txt
+#include decorate/SniperRifle.txt
+
+//WEAPON SWAY
+#include decorate/WeaponSway.txt
+
+//PLAYER CLASSES
+#include decorate/PlayerClasses.txt
+
+//MISC
+#include decorate/CasingSpawners.txt
+#include decorate/Spark&Puff.txt
+#include decorate/Tokens.txt
+
+//PROJECTILES
+#include decorate/GrenProjectile.txt
+
+//WEAPON SPAWNER
+#include decorate/WeaponSpawners.txt
+
+//CIVILIANS
+#include decorate/Civilian1.txt
+#include decorate/Civilian2.txt
+#include decorate/Civilian3.txt
+#include decorate/Civilian4.txt
+#include decorate/Capezio.txt
+
+//ENEMIES
+#include decorate/Cop1.txt
+#include decorate/Cop2.txt
+#include decorate/MinigunMarine.txt
+#include decorate/ShotgunMarine.txt
+
+/*da fare:
+Classi giocatore (decorate)
+P50 (Decorate e animazioni)
+*/

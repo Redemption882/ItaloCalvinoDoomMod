@@ -1,0 +1,1205 @@
+ACTOR Z_Glock18 : Glock18 Replaces Glock18
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+ States
+ {
+   Ready:
+	 GLCK A 1
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_JumpIFInventory("FireSel", 1, "AltAltFire")
+	 Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 GLCK A 1
+	 ZLCK ABCDEFGH 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 ZLCK HGFEDCBAAA 1
+	 GLCC ABCDE 1
+	 TNT1 A 0 A_PlaySound ("glock18/cock")
+	 GLCC FGH 1
+	 Goto Ready
+   AltAltFire:
+	 TNT1 A 0 A_TakeInventory("FireSel",1)
+	 TNT1 A 0 A_PlaySound ("weapon/firemode")
+	 TNT1 A 0 A_JumpIFInventory("Glock18BurstFire", 0, "StopAlt")
+	 TNT1 A 0 A_GiveInventory("Glock18BurstFire", 1)
+	 TNT1 A 0 A_Print("Burst fire")
+		Goto Ready		
+   StopAlt:
+	 TNT1 A 0 A_PlaySound ("weapon/firemode")
+	 TNT1 A 0 A_TakeInventory("Glock18BurstFire", 1)
+	 TNT1 A 0 A_Print("Single shot")
+	 Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIFInventory("Glock18BurstFire", 1, "Fire2")
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("glock18/fire")
+      GLCK B 1 A_FireBullets (2,1,-1,4,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.3)
+	  TNT1 A 0 A_SetAngle(angle+0.2)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("PistolCasingSpawner",0,0,0,0)
+      GLCK CDEA 1
+      Goto Ready
+   Fire2:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("glock18/fire")
+	  TNT1 A 0 A_SetPitch(pitch-0.3)
+	  TNT1 A 0 A_SetAngle(angle+0.2)
+      GLCK B 1 A_FireBullets (2,1,-1,4,"BulletSpark")
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("PistolCasingSpawner",0,0,0,0)
+      GLCK CE 1
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("glock18/fire")
+	  TNT1 A 0 A_SetPitch(pitch-0.3)
+	  TNT1 A 0 A_SetAngle(angle+0.2)
+      GLCK B 1 A_FireBullets (2,1,-1,4,"BulletSpark")
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("PistolCasingSpawner",0,0,0,0)
+      GLCK CE 1
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("glock18/fire")
+	  TNT1 A 0 A_SetPitch(pitch-0.3)
+	  TNT1 A 0 A_SetAngle(angle+0.2)
+      GLCK B 1 A_FireBullets (2,1,-1,4,"BulletSpark")
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("PistolCasingSpawner",0,0,0,0)
+      GLCK CDEA 1
+	  Goto Ready
+	AltFire:
+	  GLCM ABC 1
+	  GLCM D 3
+	  GLCM EF 1
+	  GLCM G 1 A_CustomPunch (7,0,0,"CustomPuff")
+	  GLCM HILMN 1
+	  GLCM NMLIH 1
+	  GLCK A 1 A_Refire
+	  Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("GlockClip", 18, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0
+	  Goto Ready
+	  ReloadWork:
+	  TNT1 A 0 A_PlaySound ("glock18/clipout")
+	  GLCR BCD 1
+	  TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
+	  GLCR D 14
+	  TNT1 A 0 A_PlaySound ("glock18/clipin")
+      GLCR EF 1
+      GLCR GH 1
+	  GLCR I 10 
+	  GLCR JKLMN 1
+	  GLCC ABCDE 1
+	  TNT1 A 0 A_PlaySound ("glock18/cock")
+	  GLCC FGH 1
+	ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("Clip", 1)
+	  TNT1 A 0 A_GiveInventory("GlockClip",1)
+	  TNT1 A 0 A_JumpIfInventory("GlockClip", 18, "Full")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto Full
+	Full:
+      GLCK A 0
+    Goto Ready 
+	NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("GlockClip", 18, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	}
+}
+
+ACTOR Z_P50 : P50 Replaces P50
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     P50D A 1
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+     Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 GLCK A 1
+	 P50I ABCDEFG 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 P50I HGFEDCBAAA 1
+	 P50R DEF 1
+	 P50R G 2
+	 TNT1 A 0 A_PlaySound ("p50/cock")
+	 P50R HIJ 1
+	 Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("p50/fire")
+	  P50F A 1
+      P50F B 1 A_FireBullets (2,2,-1,8,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.9)
+	  TNT1 A 0 A_SetAngle(angle+0.6)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("PistolCasingSpawner",0,0,0,0)
+      P50F CDCE 1
+	  P50D A 3
+      Goto Ready
+	AltFire:
+	  P50M ABC 1
+	  P50M D 3
+	  P50M CBA 1
+	  P50D A 1
+	  P50M E 1 A_CustomPunch (7,0,0,"CustomPuff")
+	  P50M FGHI 1
+	  P50M HGFE 1
+	  P50D A 1 A_Refire
+	  Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("P50Clip", 8, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0
+	  Goto Ready
+	  ReloadWork:
+	  TNT1 A 0 A_PlaySound ("p50/clipout")
+	  P50R ABC 1
+	  TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
+	  P50R C 14
+	  TNT1 A 0 A_PlaySound ("p50/clipin")
+      P50R CBA 1
+	  P50D A 10 
+	  P50R DEF 1
+	  P50R G 2
+	  TNT1 A 0 A_PlaySound ("p50/cock")
+	  P50R HIJ 1
+	  P50D A 1
+	ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("Clip", 1)
+	  TNT1 A 0 A_GiveInventory("P50Clip",1)
+	  TNT1 A 0 A_JumpIfInventory("P50Clip", 8, "Full")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto Full
+	Full:
+      GLCK A 0
+    Goto Ready 
+	NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("P50Clip", 8, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	}
+}
+
+ACTOR Z_PumpShotgun : PumpShotgun Replaces PumpShotgun
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     STGD A 1
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+     Loop
+   Deselect:
+     TNT1 A 0 
+     Goto DeselectAnim
+   DeselectAnim:	
+     TNT1 A 0 A_PlaySound ("weapon/inventory")
+     STGI ABCDEFG 1
+     Goto DeselectEnd
+   DeselectEnd:
+     TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+     TNT1 A 1 
+     TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+     TNT1 A 0 A_PlaySound ("weapon/inventory")
+     STGI GFEDCBA 1
+     Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      STGF A 1 
+      STGF B 1 A_FireBullets (4,3,8,8,"BulletSpark")
+      TNT1 A 0 A_SetPitch(pitch-2.0)
+      TNT1 A 0 A_SetAngle(angle+0.6)
+      TNT1 A 0 BRIGHT A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+	  STGF CD 1
+	  STGD A 5
+	  STGR ABCDE 1
+	  STGR F 3
+	  TNT1 A 0 A_PlaySound ("pumpshotgun/cockin")
+	  STGR GHI 1
+      TNT1 A 0 A_FireCustomMissile("ShotgunCasingSpawner",55,0,8,0)
+	  STGR I 8
+	  TNT1 A 0 A_PlaySound ("pumpshotgun/cockout")
+	  STGR HGF 1
+	  STGR F 5
+	  STGR EDCBA 1
+	  STGD A 1
+      TNT1 A 0 A_Refire
+      Goto Ready
+   Reload:
+      TNT1 A 0 A_JumpIfInventory("ShotgunClip", 8, "ReloadEnd")
+      TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadWork")
+      TNT1 A 0
+      Goto Ready
+   ReloadWork:
+      STGR AB 1
+	  STGR C 5
+   ReloadLoop:
+	  TNT1 A 0 A_PlaySound ("pumpshotgun/shellin")
+	  STGS AB 1
+	  TNT1 A 0 A_TakeInventory("Shell", 1)
+	  TNT1 A 0 A_GiveInventory("ShotgunClip",1)
+	  STGS A 1
+	  STGR C 5
+      TNT1 A 0 A_JumpIfInventory("ShotgunClip", 8, "ReloadEnd")
+      TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadLoop")
+      Goto ReloadEnd
+   ReloadEnd: 
+      STGR CDE 1
+	  STGR F 3
+	  TNT1 A 0 A_PlaySound ("pumpshotgun/cockin")
+	  STGR GHI 1
+	  STGR I 8
+	  TNT1 A 0 A_PlaySound ("pumpshotgun/cockout")
+	  STGR HGF 1
+	  STGR F 5
+	  STGR EDCBA 1
+	  Goto Full
+    Full:
+      STGD A 0
+      Goto Ready 
+    NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("ShotgunClip", 8, 2)
+      TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadWork")
+      TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+   Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+      Goto LightDone
+   }
+}
+
+ACTOR Z_AA12 : AA12 Replaces AA12
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     AAEG A 1 
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+     Loop
+   Deselect:
+     TNT1 A 0 
+     Goto DeselectAnim
+   DeselectAnim:	
+     AAEG A 1
+     TNT1 A 0 A_PlaySound ("weapon/inventory")
+     AAFM ABCDEFG 1
+     Goto DeselectEnd
+   DeselectEnd:
+     TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+     TNT1 A 1 
+     TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+     TNT1 A 0 A_PlaySound ("weapon/inventory")
+     AAEM GFEDCBAAA 1
+     AAER NMLKKK 1 
+     TNT1 A 0 A_PlaySound ("aa12/bolt")
+     AAER JIHGFEDCBA 1
+     Goto Ready
+   Fire:
+      AAEF A 0 A_JumpIfNoAmmo("NoAmmo")
+      TNT1 A 0 A_PlaySound ("aa12/fire")
+      AAEF A 1 
+      AAEF B 1 A_FireBullets (5,3,6,4,"BulletSpark")
+      TNT1 A 0 A_SetPitch(pitch-2.0)
+      TNT1 A 0 A_SetAngle(angle+0.6)
+      TNT1 A 0 BRIGHT A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("ShotgunCasingSpawner",0,0,0,0)
+      AAEF CDEFG 1
+      TNT1 A 0 A_Refire
+      Goto Ready
+   AltFire:
+      AABM ABCD 1
+      AABM E 3
+      AABM DCBAF 1
+      AABM G 1 A_CustomPunch (7,0,0,"CustomPuff")
+      AABM HIJK 1
+      AABM KJIHG 1
+      AABM F 1 A_Refire
+      Goto Ready
+   Reload:
+      TNT1 A 0 A_JumpIfInventory("AA12Clip", 12, 2)
+      TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadWork")
+      TNT1 A 0
+      Goto Ready
+   ReloadWork:
+      AAER ABCDEFGHI 1
+      TNT1 A 0 A_PlaySound("aa12/bolt")
+      AAER JKLMNOPQRST 1
+      TNT1 A 0 A_PlaySound("aa12/clipout")
+      TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
+      AAER UVWXYZ 1
+      AAEE A 7
+      AAEL ABCDEF 1
+      AAEL G 7 A_PlaySound ("aa12/clipin1")
+      AAEL HIJKLMNO 1
+      TNT1 A 0 A_PlaySound ("aa12/clipin2")
+      AAEL PQRSTUV 1
+      AAER RQPONMLK 1
+      TNT1 A 0 A_PlaySound ("aa12/bolt")
+      AAER JIHGFEDCBA 1
+    ReloadLoop:
+      TNT1 A 0 A_TakeInventory("Shell", 1)
+      TNT1 A 0 A_GiveInventory("AA12Clip",1)
+      TNT1 A 0 A_JumpIfInventory("AA12Clip", 12, "Full")
+      TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadLoop")
+      Goto Full
+    Full:
+      AAEG A 0
+      Goto Ready 
+    NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("AA12Clip", 12, 2)
+      TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadWork")
+      TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+   Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+      Goto LightDone
+	}
+}
+
+ACTOR Z_DBSG : DBSG Replaces DBSG
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+  States
+  {
+  Ready:
+    SSID A 1 
+	TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 SSIV ABCDEFG 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 SSIV GFEDCBA 1
+	 SSID A 1
+	 Goto Ready
+   Fire:
+    TNT1 A 0 A_JumpIfInventory ("DBSGFire2", 1, "AltReloadWork")
+    TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+  	TNT1 A 0 BRIGHT A_GunFlash
+	TNT1 A 0 A_AlertMonsters
+    SSIF A 1 
+	TNT1 A 0 BRIGHT A_FireBullets(8,6,6,7,"BulletSpark")
+	TNT1 A 0 BRIGHT A_FireBullets(8,6,6,7,"BulletSpark")
+	TNT1 A 0 A_SetPitch(pitch-2.0)
+	TNT1 A 0 A_SetAngle(angle+0.6)
+	SSIF BC 1
+	SSID A 6
+    Goto Ready	
+   AltFire:
+    TNT1 A 0 A_JumpIfInventory ("DBSGFire2", 1, "AltFire2")
+    TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	TNT1 A 0 A_GiveInventory ("DBSGFire2")
+  	TNT1 A 0 BRIGHT A_GunFlash
+	TNT1 A 0 A_AlertMonsters
+    SSIF E 1 BRIGHT A_FireBullets(6,4,6,7,"BulletSpark")
+	TNT1 A 0 A_SetPitch(pitch-2.0)
+	TNT1 A 0 A_SetAngle(angle+0.6)
+	SSIF BC 1
+	SSID A 6
+    Goto Ready
+   AltFire2:
+    TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+  	TNT1 A 0 BRIGHT A_GunFlash
+	TNT1 A 0 A_TakeInventory ("DBSGFire2")
+	TNT1 A 0 A_AlertMonsters
+    SSIF D 1 BRIGHT A_FireBullets(6,4,6,7,"BulletSpark")
+	TNT1 A 0 A_SetPitch(pitch-2.0)
+	TNT1 A 0 A_SetAngle(angle+0.2)
+	SSIF BC 1
+	SSID A 6
+    Goto Ready
+   Reload:
+	TNT1 A 0 A_JumpIfInventory("DBSGClip", 2, 2)
+	TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadWork")
+	TNT1 A 0
+	Goto Ready
+   ReloadWork:
+    TNT1 A 0 A_JumpIfInventory("DBSGFire2", 1, "AltReloadWork")
+    SSID A 1
+	SSIR A 1
+	TNT1 A 0 A_PlaySound ("dbsg/open")
+	SSIR BC 1
+	SSIL A 1
+	SSIR DE 1
+	TNT1 A 0 A_FireCustomMissile("ShotgunCasingSpawner",0,0,0,0)
+	TNT1 A 0 A_FireCustomMissile("ShotgunCasingSpawner",0,0,0,0)
+	SSIR E 7
+	SSIR FGHI 1
+	TNT1 A 0 A_PlaySound ("dbsg/reload")
+	SSIR J 1
+	SSIA AB 1
+	SSIR KLMN 1
+	SSIR N 7
+	TNT1 A 0 A_PlaySound ("dbsg/close")
+	SSIR O 1
+	SSIL B 1
+	SSIR PBA 1 
+	Goto ReloadLoop
+   AltReloadWork:
+    TNT1 A 0 A_TakeInventory ("DBSGFire2")
+    SSID A 1
+	SSIR A 1
+	TNT1 A 0 A_PlaySound ("dbsg/open")
+	SSIR B 1
+	SSGR ABC 1
+	TNT1 A 0 A_FireCustomMissile("ShotgunCasingSpawner",0,0,0,0)
+	SSGR E 7
+	SSGR FGHI 1
+	TNT1 A 0 A_PlaySound ("dbsg/reload")
+	SSIR J 1
+	SSIA AB 1
+	SSIR KLMN 1
+	SSIR N 7
+	TNT1 A 0 A_PlaySound ("dbsg/close")
+	SSIR O 1
+	SSIL B 1
+	SSIR PBA 1 
+	Goto ReloadLoop
+   ReloadLoop:
+	TNT1 A 0 A_TakeInventory("Shell", 1)
+	TNT1 A 0 A_GiveInventory("DBSGClip",1)
+	TNT1 A 0 A_JumpIfInventory("DBSGClip", 2, "Full")
+	TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadLoop")
+	Goto Full
+   Full:
+    SSID A 0
+    Goto Ready 
+   NoAmmo:
+    TNT1 A 0 A_JumpIfInventory("DBSGClip", 2, 2)
+	TNT1 A 0 A_JumpIfInventory("Shell", 1, "ReloadWork")
+	TNT1 A 0 A_PlaySound ("weapon/noammo")
+	TNT1 A 0 A_TakeInventory ("DBSGFire2")
+    Goto Ready 
+  Flash:
+    TNT1 A 4 Bright A_Light1
+    TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	}
+}
+
+ACTOR Z_AK47 : AK47 Replaces AK47
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+  States
+  {
+    Ready:
+      
+      AK47 A 1
+	  TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	  TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	  TNT1 A 0 A_JumpIFInventory("FireSel", 1, "AltAltFire")
+      Loop
+    Deselect:
+      TNT1 A 0 
+      Goto DeselectAnim
+    DeselectAnim:
+      TNT1 A 0 A_PlaySound ("weapon/inventory")
+      AK47 A 1
+      AKEF ABCDEFGH 1
+      Goto DeselectEnd
+    DeselectEnd:
+      TNT1 AAAAAAAAAAAAAA 00 A_Lower
+      Loop
+    Select:
+      TNT1 A 1 
+      TNT1 AAAAAAAAAAAAAA 00 A_Raise
+      Goto SelectAnim	 
+    SelectAnim:
+      TNT1 A 0 A_PlaySound ("weapon/inventory")
+      AKEF HGFEDCBA 1
+      AKRE ABCDE 1
+      AKRE F 5
+      TNT1 A 0 A_PlaySound ("ak47/bolt")
+      AKRE GH 1
+      AKRE H 5
+      TNT1 A 0 A_PlaySound ("ak47/bolt2")
+      AKRE GF 1
+      AKRE EDCBA 1
+      Goto Ready
+    AltAltFire:
+      TNT1 A 0 A_TakeInventory("FireSel",1)
+      TNT1 A 0 A_PlaySound ("weapon/firemode")
+      TNT1 A 0 A_JumpIFInventory("AKBurstFire", 0, "StopAlt")
+      TNT1 A 0 A_GiveInventory("AKBurstFire",1)
+      TNT1 A 0 A_Print("Burst fire")
+      Goto Ready		
+    StopAlt:
+      TNT1 A 0 A_PlaySound ("weapon/firemode")
+      TNT1 A 0 A_TakeInventory("AKBurstFire",1)
+      TNT1 A 0 A_Print("Full Auto")
+      Goto Ready
+    Fire:
+      TNT1 A 0 A_JumpIFInventory("AKBurstFire", 1, "Fire2")
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      AK4F A 1 
+      AK4F B 1 A_FireBullets (2,3,-1,6,"BulletSpark")
+      TNT1 A 0 A_SetPitch(pitch-0.6)
+      TNT1 A 0 A_SetAngle(angle+0.2)
+      AK4F C 1
+      TNT1 A 0 BRIGHT A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+      AK47 A 1
+      TNT1 A 0 A_Refire
+      Goto Ready
+    Fire2:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      AK4F A 1 
+      AK4F B 1 A_FireBullets (2,3,-1,6,"BulletSpark")
+      TNT1 A 0 A_SetPitch(pitch-0.6)
+      TNT1 A 0 A_SetAngle(angle+0.2)
+      AK4F C 1
+      TNT1 A 0 BRIGHT A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+      AK47 A 1
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      AK4F A 1 
+      AK4F B 1 A_FireBullets (2,3,-1,6,"BulletSpark")
+      TNT1 A 0 A_SetPitch(pitch-0.6)
+      TNT1 A 0 A_SetAngle(angle+0.2)
+      AK4F C 1
+      TNT1 A 0 BRIGHT A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+      AK47 A 1
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      AK4F A 1 
+      AK4F B 1 A_FireBullets (2,3,-1,6,"BulletSpark")
+      TNT1 A 0 A_SetPitch(pitch-0.6)
+      TNT1 A 0 A_SetAngle(angle+0.2)
+      AK4F C 1
+      TNT1 A 0 BRIGHT A_GunFlash
+      TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+      AK47 A 1
+      Goto Ready
+    Reload:
+      TNT1 A 0 A_JumpIfInventory("AKClip", 30, 2)
+      TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+      TNT1 A 0
+      Goto Ready
+    ReloadWork:
+      AKRE ABCDE 1
+      AKRE F 5
+      TNT1 A 0 A_PlaySound ("ak47/bolt")
+      AKRE GH 1
+      AKRE H 5
+      AKRE IJK 1
+      AKRL AB 1
+      AKRB A 1
+      AKRL CDEFGHI 1
+      AKRL J 5
+      AKRL K 1
+      TNT1 A 0 A_PlaySound ("ak47/clipout")
+      AKRL LMNOP 1
+      TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
+      AKRL P 11
+      AKRL Q 1
+      AKRB J 1
+      AKRL RS 1
+      AKRL Z 1
+      TNT1 A 0 A_PlaySound ("ak47/clipin")
+      AKRL Y 1
+      AKRL KJIHGFEDC 1
+      AKRB A 1
+      AKRL BA 1
+      AKRE KJIH 1
+      AKRE H 5
+      TNT1 A 0 A_PlaySound ("ak47/bolt2")
+      AKRE GF 1
+      AKRE F 5
+      AKRE EDCBA 1
+    ReloadLoop:
+      TNT1 A 0 A_TakeInventory("Clip", 1)
+      TNT1 A 0 A_GiveInventory("AKClip",1)
+      TNT1 A 0 A_JumpIfInventory("AKClip", 30, "Full")
+      TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+      Goto Full
+    Full:
+      AK47 A 0
+      Goto Ready 
+    NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("AKClip", 30, 2)
+      TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+      TNT1 A 0 A_PlaySound ("weapon/noammo")
+      Goto Ready 
+    Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+      Goto LightDone
+	}
+}
+ACTOR Z_M60 : M60 Replaces M60
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     M60R A 1 
+	 TNT1 A 0 A_JumpIFInventory("FireSel", 1, "AltAltFire")
+     TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+     Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 M60R A 1
+	 M6IN ABCDEF 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 M6IN FEDCBA 1
+	 M60R A 1
+	 TNT1 A 0 A_PlaySound ("m60/ready")
+	 Goto Ready
+   AltAltFire:
+	 TNT1 A 0 A_TakeInventory("FireSel",1)
+ 	 TNT1 A 0 A_PlaySound ("weapon/firemode")
+	 TNT1 A 0 A_JumpIFInventory("M60BurstFire", 0, "StopAlt")
+	 TNT1 A 0 A_GiveInventory("M60BurstFire", 1)
+	 TNT1 A 0 A_Print("Burst fire")
+ 	 Goto Ready		
+   StopAlt:
+	 TNT1 A 0 A_PlaySound ("weapon/firemode")
+	 TNT1 A 0 A_TakeInventory("M60BurstFire", 1)
+	 TNT1 A 0 A_Print("Full Auto")
+	 Goto Ready
+   Fire:
+	  TNT1 A 0 A_JumpIFInventory("M60BurstFire", 1, "Fire2")
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      M60F A 1 A_FireBullets (3,4,-1,7,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-1.0)
+	  TNT1 A 0 A_SetAngle(angle+0.4)
+	  M60F B 1 
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  TNT1 A 0 A_FireCustomMissile("MGLinksSpawner",0,0,0,0)
+	  M60R A 1
+	  TNT1 A 0 A_Refire
+	  Goto Ready
+    Fire2:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      M60F A 1 A_FireBullets (3,4,-1,7,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-1.0)
+	  TNT1 A 0 A_SetAngle(angle+0.4)
+	  M60F B 1 
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  TNT1 A 0 A_FireCustomMissile("MGLinksSpawner",0,0,0,0)
+	  M60R A 1
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      M60F A 1 A_FireBullets (3,4,-1,7,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-1.0)
+	  TNT1 A 0 A_SetAngle(angle+0.4)
+	  M60F B 1 
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  TNT1 A 0 A_FireCustomMissile("MGLinksSpawner",0,0,0,0)
+	  M60R A 1
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      M60F A 1 A_FireBullets (3,4,-1,7,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-1.0)
+	  TNT1 A 0 A_SetAngle(angle+0.4)
+	  M60F B 1 
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  TNT1 A 0 A_FireCustomMissile("MGLinksSpawner",0,0,0,0)
+	  M60R A 1
+	  Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("M60Clip", 60, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0
+	  Goto Ready
+	ReloadWork:
+	  TNT1 A 0 A_PlaySound ("m60/reloadseq")
+	  M6IN ABCDE 1
+	  M6IN F 65
+	  TNT1 A 0 A_PlaySound ("m60/ready")
+	  M6IN EDCBA 1
+	  ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("Clip", 1)
+	  TNT1 A 0 A_GiveInventory("M60Clip",1)
+	  TNT1 A 0 A_JumpIfInventory("M60Clip", 60, "Full")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto Full
+	Full:
+      M60R A 0
+    Goto Ready 
+	NoAmmo:
+	  TNT1 A 0 A_JumpIfInventory("M60Clip", 60, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	}
+}
+
+ACTOR Z_Minigun : Minigun Replaces Minigun 
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     MGND A 1 
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))     
+     Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 MGNR ABC 1
+	 MGNI ABCD 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 MGNI DCBA 1
+	 MGNR CBA 1
+	 TNT1 A 0 A_PlaySound ("minigun/ready")
+	 Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      MGNF A 1 A_FireBullets (1,2,-1,9,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.4)
+	  TNT1 A 0 A_SetAngle(angle+0.8)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  MGND CD 1
+	  TNT1 A 0 A_Refire
+	  Goto EndFire
+	EndFire:
+	  MGND ABCD 1
+	  MGND A 1
+	  Goto Ready
+	AltFire:
+	  TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("minigun/spinstart")
+	  MGND ABCD 2
+	  MGND ABCDABCD 1
+	  MGND ABCD 1
+	  Goto AltHold
+	AltHold:
+	  TNT1 A 0 A_PlaySound ("minigun/spinloop")
+	  TNT1 A 0 A_JumpIfNoAmmo("AltEndFire")
+      MGNF A 1 A_FireBullets (1,2,-1,9,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.4)
+	  TNT1 A 0 A_SetAngle(angle+0.8)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  MGND C 1
+	  TNT1 A 0 A_JumpIfNoAmmo("AltEndFire")
+	  MGNF B 1 A_FireBullets (1,2,-1,9,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.4)
+	  TNT1 A 0 A_SetAngle(angle+0.8)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  MGND A 1
+	  TNT1 A 0 A_Refire
+	  Goto AltEndFire
+	AltEndFire:
+	  TNT1 A 0 A_PlaySound ("minigun/spinstop")
+	  MGND ABCD 1
+	  MGND ABCDABCD 1
+	  MGND ABCD 2
+	  TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("MinigunClip", 100, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0
+	  Goto Ready
+	ReloadWork:
+	  MGNR ABCD 1
+	  TNT1 A 0 A_PlaySound ("minigun/clipout")
+	  MGNR D 35
+	  TNT1 A 0 A_PlaySound ("minigun/clipin")
+	  MGNR D 10
+	  MGNR DCBA 1
+	  TNT1 A 0 A_PlaySound ("minigun/ready")
+	  ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("Clip", 1)
+	  TNT1 A 0 A_GiveInventory("MinigunClip",1)
+	  TNT1 A 0 A_JumpIfInventory("MinigunClip", 100, "Full")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto Full
+	Full:
+      M60R A 0
+    Goto Ready 
+	NoAmmo:
+	  TNT1 A 0 A_ClearRefire
+	  TNT1 A 0 A_JumpIfInventory("MinigunClip", 100, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	}
+}
+
+ACTOR Z_GrenadeLauncher : GrenadeLauncher Replaces GrenadeLauncher 
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     GRNL A 1 
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+     Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 GRNL A 1
+	 GRNI ABCDEFGH 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 GRNI HGFEDCBA 1
+	 GRNL A 1
+	 Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("grenlncr/fire")
+	  GRNF A 1
+      GRNF B 1 
+	  TNT1 A 0 A_FireCustomMissile("GrenProj", 0, 1, 0, 0, 0, 1)
+	  TNT1 A 0 A_SetPitch(pitch-0.3)
+	  TNT1 A 0 A_SetAngle(angle-0.2)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      GRNF CDE 1
+	  GRNL A 3
+	  GRNH AB 1
+	  GRNL A 15
+	  GRNL A 1 A_Refire
+      Goto Ready
+	 AltFire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("grenlncr/fire")
+	  GRNF A 1
+      GRNF B 1 
+	  TNT1 A 0 A_FireCustomMissile("GrenProjTimed", 0, 1, 0, 0, 0, 1)
+	  TNT1 A 0 A_SetPitch(pitch-0.3)
+	  TNT1 A 0 A_SetAngle(angle-0.2)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      GRNF CDE 1
+	  GRNL A 3
+	  GRNH AB 1
+	  GRNL A 15
+	  GRNL A 1 A_Refire
+      Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("GLClip", 6, 2)
+	  TNT1 A 0 A_JumpIfInventory("RocketAmmo", 1, "ReloadStart")
+	  TNT1 A 0 A_JumpIfInventory("GLClip", 6, "Full")
+	  TNT1 A 0
+	  Goto Ready
+	ReloadStart:
+	  GRNI ABCDEF 1
+	ReloadWork:
+	  GRNI F 7
+	  TNT1 A 0 A_PlaySound ("grenlncr/clipout")
+	  TNT1 A 0 A_FireCustomMissile("GLEmptyClipSpawner",0,0,0,0)
+	  GRNR AB 1
+	  GRNR B 16
+	  TNT1 A 0 A_PlaySound ("grenlncr/clipin")
+	  GRNR A 1
+	ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("RocketAmmo", 1)
+	  TNT1 A 0 A_GiveInventory("GLClip",1)
+	  TNT1 A 0 A_JumpIfInventory("GLClip", 6, "ReloadEnd")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto ReloadEnd
+	ReloadEnd:
+	  GRNI FFFEDCBA 1
+	  Goto Full
+	Full:
+      GRNL A 0
+    Goto Ready 
+	NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("GLClip", 6, 2)
+	  TNT1 A 0 A_JumpIfInventory("RocketAmmo", 1, "ReloadStart")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	}
+}
+
+ACTOR Z_SniperRifle : SniperRifle Replaces SniperRifle
+{
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   States
+   {
+   Ready:
+     TNT1 A 0 A_SetCrosshair(0)
+     TNT1 A 0 A_JumpIfInventory("ScopeZoom", 1, "ScopedReady")
+     SNPG A 1
+	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+     Loop
+   ScopedReady:
+     TNT1 A 0 A_SetCrosshair(8)
+     SNPS A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Goto Ready
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 SNPI ABCDEFGHIJ 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 SNPI JIHGFEDCBA 1
+	 Goto Ready
+   Fire:
+     TNT1 A 0 A_JumpIfInventory("ScopeZoom", 1, "ScopedFire")
+     TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	 SNPF A 1
+     SNPF B 1 A_FireBullets (3,4,1,20,"BulletSpark")
+	 TNT1 A 0 A_SetPitch(pitch-1.5)
+	 TNT1 A 0 A_SetAngle(angle+0.4)
+	 TNT1 A 0 BRIGHT A_GunFlash
+	 TNT1 A 0 A_AlertMonsters
+     TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+     SNPF CD 1
+	 SNPG A 28
+	 Goto Ready
+   ScopedFire:
+     TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	 SNPS A 1 A_FireBullets (3,4,1,20,"BulletSpark")
+	 TNT1 A 0 A_SetPitch(pitch-1.5)
+	 TNT1 A 0 A_SetAngle(angle+0.4)
+	 TNT1 A 0 BRIGHT A_GunFlash
+	 TNT1 A 0 A_AlertMonsters
+     TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	 SNPS A 28
+	 Goto Ready
+   AltFire:
+     TNT1 A 0 A_SetCrosshair(8)
+     TNT1 A 0 A_JumpIfInventory("ScopeZoom", 2, "ZoomOut")
+     TNT1 A 0 A_JumpIfInventory("ScopeZoom", 1, "ZoomMore")
+     TNT1 A 0 A_PlaySound("sniper/scope")
+     TNT1 A 0 A_GiveInventory("ScopeZoom", 1)
+     SNPS A 2 A_ZoomFactor(4.0)
+     Goto Ready
+   ZoomMore:
+     TNT1 A 0 A_PlaySound("sniper/scope")
+     TNT1 A 0 A_GiveInventory("ScopeZoom", 1)
+     SNPS A 2 A_ZoomFactor(8.0)
+     Goto Ready
+   ZoomOut:
+     TNT1 A 0 A_TakeInventory("ScopeZoom", 2)
+     TNT1 A 0 A_PlaySound("sniper/scope")
+     SNPG A 2 A_ZoomFactor(1.0)
+     Goto Ready
+   Reload:
+     TNT1 A 0 A_JumpIfInventory("ScopeZoom", 1, "ReloadScoped")
+     TNT1 A 0 A_JumpIfInventory("ScopeZoom", 2, "ReloadScoped")
+	 TNT1 A 0 A_JumpIfInventory("SniperRifleClip", 10, 2)
+	 TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadStart")
+	 TNT1 A 0 A_JumpIfInventory("SniperRifleClip", 10, "Full")
+	 TNT1 A 0
+	 Goto ReloadStart
+   ReloadScoped:
+     TNT1 A 0 A_SetCrosshair(0)
+     TNT1 A 0 A_JumpIfInventory("SniperRifleClip", 10, 2)
+	 TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadStart")
+	 TNT1 A 0 A_JumpIfInventory("SniperRifleClip", 10, "ScopedFull")
+	 Goto ReloadStart
+   ReloadStart:
+     TNT1 A 0 A_TakeInventory("ScopeZoom", 2)
+     TNT1 A 0 A_ZoomFactor(1.0)
+	 SNPI ABCDEFGH 1
+   ReloadWork:
+	 SNPI H 5
+	 TNT1 A 0 A_PlaySound ("sniper/clipout")
+     SNPR AB 1
+	 TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
+	 SNPR B 14
+	 SNPR A 1
+	 TNT1 A 0 A_PlaySound ("sniper/clipin")
+	 SNPI H 14
+	 TNT1 A 0 A_PlaySound ("sniper/cock")
+   ReloadLoop:
+	 TNT1 A 0 A_TakeInventory("Clip", 1)
+	 TNT1 A 0 A_GiveInventory("SniperRifleClip",1)
+	 TNT1 A 0 A_JumpIfInventory("SniperRifleClip", 10, "ReloadEnd")
+	 TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	 Goto ReloadEnd
+   ReloadEnd:
+	 SNPI HGFEDCBA 1
+	 Goto Full
+   Full:
+     TNT1 A 0
+     Goto Ready 
+   ScopedFull:
+     TNT1 A 0
+     Goto ScopedReady 
+   NoAmmo:
+     TNT1 A 0 A_JumpIfInventory("SniperRifleClip", 10, 2)
+	 TNT1 A 0 A_JumpIfInventory("Clip", 1, "Reload")
+	 TNT1 A 0 A_PlaySound ("weapon/noammo")
+     Goto Ready 
+   Flash:
+     TNT1 A 4 Bright A_Light1
+     TNT1 A 3 Bright A_Light2
+     Goto LightDone
+	}
+}
