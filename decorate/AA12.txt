@@ -57,7 +57,7 @@ ACTOR AA12 : Weapon
       AAEF A 0 A_JumpIfNoAmmo("NoAmmo")
       TNT1 A 0 A_PlaySound ("aa12/fire")
       AAEF A 1 
-      AAEF B 1 A_FireBullets (5,3,6,4,"BulletSpark")
+      AAEF B 1 A_FireBullets (6,5,6,2,"BulletSpark")
       TNT1 A 0 A_SetPitch(pitch-2.0)
       TNT1 A 0 A_SetAngle(angle+0.6)
       TNT1 A 0 BRIGHT A_GunFlash
