@@ -91,7 +91,7 @@ ACTOR Shotgunner : CustomDoomPlayer
   Player.StartItem "Z_AA12"
   Player.StartItem "Z_Glock18"
   Player.StartItem "GlockClip", 18
-  Player.StartItem "ShotgunClip", 8
+  Player.StartItem "AA12Clip", 12
   Player.StartItem "Clip", 50
   Player.StartItem "Shell", 10
   Player.StartItem "Action_FireMode", 1
