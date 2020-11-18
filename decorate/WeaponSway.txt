@@ -9,7 +9,7 @@ ACTOR Z_Glock18 : Glock18 Replaces Glock18
    Ready:
 	 GLCK A 1
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
 	 TNT1 A 0 A_JumpIFInventory("FireSel", 1, "AltAltFire")
 	 Loop
    Deselect:
@@ -146,7 +146,7 @@ ACTOR Z_P50 : P50 Replaces P50
    Ready:
      P50D A 1
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
      Loop
    Deselect:
 	 TNT1 A 0 
@@ -244,7 +244,7 @@ ACTOR Z_PumpShotgun : PumpShotgun Replaces PumpShotgun
    Ready:
      STGD A 1
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
      Loop
    Deselect:
      TNT1 A 0 
@@ -342,7 +342,7 @@ ACTOR Z_AA12 : AA12 Replaces AA12
    Ready:
      AAEG A 1 
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
      Loop
    Deselect:
      TNT1 A 0 
@@ -441,7 +441,7 @@ ACTOR Z_DBSG : DBSG Replaces DBSG
   Ready:
     SSID A 1 
 	TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
 	Loop
    Deselect:
 	 TNT1 A 0 
@@ -579,7 +579,7 @@ ACTOR Z_AK47 : AK47 Replaces AK47
       
       AK47 A 1
 	  TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	  TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	  TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
 	  TNT1 A 0 A_JumpIFInventory("FireSel", 1, "AltAltFire")
       Loop
     Deselect:
@@ -735,7 +735,7 @@ ACTOR Z_M60 : M60 Replaces M60
      M60R A 1 
 	 TNT1 A 0 A_JumpIFInventory("FireSel", 1, "AltAltFire")
      TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
      Loop
    Deselect:
 	 TNT1 A 0 
@@ -859,7 +859,7 @@ ACTOR Z_Minigun : Minigun Replaces Minigun
    Ready:
      MGND A 1 
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))     
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))   
      Loop
    Deselect:
 	 TNT1 A 0 
@@ -977,7 +977,7 @@ ACTOR Z_GrenadeLauncher : GrenadeLauncher Replaces GrenadeLauncher
    Ready:
      GRNL A 1 
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
      Loop
    Deselect:
 	 TNT1 A 0 
@@ -1084,7 +1084,7 @@ ACTOR Z_SniperRifle : SniperRifle Replaces SniperRifle
      TNT1 A 0 A_JumpIfInventory("ScopeZoom", 1, "ScopedReady")
      SNPG A 1
 	 TNT1 A 0 A_WeaponReady(WRF_ALLOWRELOAD)
-	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"))
+	 TNT1 A 0 A_WeaponOffset(CallACS("Script_GetGunOffsetX"), CallACS("Script_GetGunOffsetY"))
      Loop
    ScopedReady:
      TNT1 A 0 A_SetCrosshair(8)
