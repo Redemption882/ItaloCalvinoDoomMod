@@ -1,0 +1,144 @@
+ACTOR MinigunClip : Ammo
+{
+   +INVENTORY.IGNORESKILL
+   Inventory.MaxAmount 100
+}
+
+ACTOR Minigun : Weapon
+{
+   inventory.pickupmessage "You got the Minigun!"
+   Inventory.PickupSound "weapon/pickup"
+   Weapon.AmmoType "MinigunClip"
+   Weapon.AmmoGive 0
+   Weapon.AmmoUse 1
+   Weapon.AmmoType2 "Clip"
+   Weapon.AmmoGive2 50
+   Weapon.AmmoUse2 0
+   Weapon.Kickback 100
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   Weapon.SelectionOrder 1303
+   Weapon.SlotNumber 4
+   AttackSound "minigun/fire"
+   Scale 1.0
+   +NOAUTOAIM
+   +NOAUTOFIRE
+   +Weapon.Ammo_Optional 
+   +Weapon.Alt_Ammo_Optional 
+   +WEAPON.ALT_USES_BOTH
+   +INVENTORY.IGNORESKILL
+   +weapon.noalert
+   States
+   {
+   Ready:
+     MGND A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Goto Ready
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 MGNR ABC 1
+	 MGNI ABCD 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 MGNI DCBA 1
+	 MGNR CBA 1
+	 TNT1 A 0 A_PlaySound ("minigun/ready")
+	 Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+      MGNF A 1 A_FireBullets (1,2,-1,9,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.4)
+	  TNT1 A 0 A_SetAngle(angle+0.8)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  MGND CD 1
+	  TNT1 A 0 A_Refire
+	  Goto EndFire
+	EndFire:
+	  MGND ABCD 1
+	  MGND A 1
+	  Goto Ready
+	AltFire:
+	  TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("minigun/spinstart")
+	  MGND ABCD 2
+	  MGND ABCDABCD 1
+	  MGND ABCD 1
+	  Goto AltHold
+	AltHold:
+	  TNT1 A 0 A_PlaySound ("minigun/spinloop")
+	  TNT1 A 0 A_JumpIfNoAmmo("AltEndFire")
+      MGNF A 1 A_FireBullets (1,2,-1,9,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.4)
+	  TNT1 A 0 A_SetAngle(angle+0.8)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  MGND C 1
+	  TNT1 A 0 A_JumpIfNoAmmo("AltEndFire")
+	  MGNF B 1 A_FireBullets (1,2,-1,9,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.4)
+	  TNT1 A 0 A_SetAngle(angle+0.8)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("RifleCasingSpawner",0,0,0,0)
+	  MGND A 1
+	  TNT1 A 0 A_Refire
+	  Goto AltEndFire
+	AltEndFire:
+	  TNT1 A 0 A_PlaySound ("minigun/spinstop")
+	  MGND ABCD 1
+	  MGND ABCDABCD 1
+	  MGND ABCD 2
+	  TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("MinigunClip", 100, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0
+	  Goto Ready
+	ReloadWork:
+	  MGNR ABCD 1
+	  TNT1 A 0 A_PlaySound ("minigun/clipout")
+	  MGNR D 35
+	  TNT1 A 0 A_PlaySound ("minigun/clipin")
+	  MGNR D 10
+	  MGNR DCBA 1
+	  TNT1 A 0 A_PlaySound ("minigun/ready")
+	  ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("Clip", 1)
+	  TNT1 A 0 A_GiveInventory("MinigunClip",1)
+	  TNT1 A 0 A_JumpIfInventory("MinigunClip", 100, "Full")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto Full
+	Full:
+      M60R A 0
+    Goto Ready 
+	NoAmmo:
+	  TNT1 A 0 A_ClearRefire
+	  TNT1 A 0 A_JumpIfInventory("MinigunClip", 100, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	Spawn:
+	  MINI A -1
+      Stop
+	}
+}

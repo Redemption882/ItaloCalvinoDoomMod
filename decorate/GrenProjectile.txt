@@ -9,6 +9,7 @@ ACTOR GrenProj
     -NOGRAVITY
 	+BOUNCEONWALLS
 	+BOUNCEONCEILINGS
+	+EXTREMEDEATH
 	BounceSound "grenade/bounce"
 	States
 	{
@@ -66,6 +67,7 @@ ACTOR GrenProjTimed
 	+BOUNCEONCEILINGS
 	-ALLOWBOUNCEONACTORS
 	-NOEXPLODEFLOOR
+	+EXTREMEDEATH
 	BounceSound "grenade/bounce"
 	ReactionTime 20
 	States

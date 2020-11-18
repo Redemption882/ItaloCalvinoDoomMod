@@ -1,0 +1,37 @@
+ACTOR Capezio 
+{
+  Health 66
+  PainChance 200
+  Speed 18
+  Radius 20
+  Height 56
+  Monster
+  scale 0.50
+  +FRIGHTENED
+  +DROPOFF
+  MaxStepHeight 55
+  MaxDropoffHeight 32
+  SeeSound "man/alert"
+  ActiveSound "man/active"
+  DeathSound "man/death"
+  States
+  {
+  Spawn:
+    CAPE A 10 A_Look
+	Loop
+  See:
+    CAPE ABCD 3 A_Chase
+    Loop
+  Pain:
+    CAPE A 3
+    CAPE A 3 A_Pain
+    Goto see
+  Death:
+    CAPE N 5 a_die
+	CAPE P 5 
+    CAPE Q 5 A_Scream
+	CAPE RSTU 5 A_NoBlocking
+    CAPE V -1
+    Stop
+  }
+}

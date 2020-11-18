@@ -150,7 +150,7 @@ DSCOPTH5 DSCOPTH5
 DSCOPTH6 DSCOPTH6
 DSCOPTH7 DSCOPTH7
 
-cop/pain DCOPPAIN1
+cop/pain DCOPAIN1
 $limit cop/pain 0
 cop/attack  P50FIRE
 $limit cop/attack 0

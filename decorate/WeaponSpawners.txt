@@ -9,14 +9,32 @@ ACTOR Glock18Spawner : CustomInventory Replaces Pistol
    IGLK A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("Glock18", 1)
+   TNT1 A 0 A_GiveInventory("Z_Glock18", 1)
    Goto Spawn
    TNT1 A 0
    Fail
    }
 }
-   
-ACTOR AA12Spawner : CustomInventory Replaces Shotgun
+ 
+ACTOR P50Spawner : CustomInventory 
+{ 
+   inventory.pickupmessage "You got the P50!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.8
+   States 
+   { 
+   Spawn: 
+   P50P A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("P50", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR AA12Spawner : CustomInventory
 { 
    inventory.pickupmessage "You got the AA12!"
    Inventory.PickupSound "weapon/pickup"
@@ -27,7 +45,25 @@ ACTOR AA12Spawner : CustomInventory Replaces Shotgun
    AA12 A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("AA12", 1)
+   TNT1 A 0 A_GiveInventory("Z_AA12", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR PumpShotgunSpawner : CustomInventory Replaces Shotgun
+{ 
+   inventory.pickupmessage "You got the Shotgun!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.2
+   States 
+   { 
+   Spawn: 
+   SHOT A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("Z_PumpShotgun", 1)
    Goto Spawn
    TNT1 A 0
    Fail
@@ -45,7 +81,7 @@ ACTOR DBSGSpawner : CustomInventory Replaces SuperShotgun
    SSGN A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("DBSG", 1)
+   TNT1 A 0 A_GiveInventory("Z_DBSG", 1)
    Goto Spawn
    TNT1 A 0
    Fail
@@ -63,14 +99,14 @@ ACTOR AK47Spawner : CustomInventory
    AK4I A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("AK47", 1)
+   TNT1 A 0 A_GiveInventory("Z_AK47", 1)
    Goto Spawn
    TNT1 A 0
    Fail
    }
 }
 
-ACTOR M60Spawner : CustomInventory Replaces Chaingun
+ACTOR M60Spawner : CustomInventory
 { 
    inventory.pickupmessage "You got the M60!"
    Inventory.PickupSound "weapon/pickup"
@@ -81,7 +117,25 @@ ACTOR M60Spawner : CustomInventory Replaces Chaingun
    M60I A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("M60", 1)
+   TNT1 A 0 A_GiveInventory("Z_M60", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR MinigunSpawner : CustomInventory Replaces Chaingun
+{ 
+   inventory.pickupmessage "You got the Minigun!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.0
+   States 
+   { 
+   Spawn: 
+   MINI A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("Z_Minigun", 1)
    Goto Spawn
    TNT1 A 0
    Fail
@@ -99,7 +153,7 @@ ACTOR GLSpawner : CustomInventory Replaces RocketLauncher
    GLMM A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("GrenadeLauncher", 1)
+   TNT1 A 0 A_GiveInventory("Z_GrenadeLauncher", 1)
    Goto Spawn
    TNT1 A 0
    Fail
@@ -117,7 +171,7 @@ ACTOR SniperRifleSpawner : CustomInventory
    GLMM A -1
    Stop
    Pickup:
-   TNT1 A 0 A_GiveInventory("SniperRifle", 1)
+   TNT1 A 0 A_GiveInventory("Z_SniperRifle", 1)
    Goto Spawn
    TNT1 A 0
    Fail

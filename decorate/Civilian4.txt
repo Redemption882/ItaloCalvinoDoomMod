@@ -1,4 +1,4 @@
-ACTOR Civilian4 Replaces ShotgunGuy
+ACTOR Civilian4
 {
   Health 60
   PainChance 200
@@ -6,20 +6,22 @@ ACTOR Civilian4 Replaces ShotgunGuy
   Radius 20
   Height 56
   Monster
-  +FRIGHTENED
   scale 1.0
- +DROPOFF
+  +FRIGHTENED
+  +DROPOFF
   MaxStepHeight 55
   MaxDropoffHeight 32
+  SeeSound "man/alert"
+  ActiveSound "man/active"
   DeathSound "man/death"
   States
   {
   Spawn:
    WEAS A 10 a_look
-   Goto See
+   Loop
   See:
     WEAS ABCD 3 a_chase
-    Goto Spawn
+    Loop
   Pain:
     Weas g 3
     weas g 3 A_Pain

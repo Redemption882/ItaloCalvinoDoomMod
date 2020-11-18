@@ -11,13 +11,11 @@
 #include decorate/GrenadeLauncher.txt
 #include decorate/SniperRifle.txt
 
+//WEAPON SWAY
+#include decorate/WeaponSway.txt
+
 //PLAYER CLASSES
-#include decorate/RiflemanPlayer.txt
-#include decorate/ShotgunnerPlayer.txt
-#include decorate/MachinegunnerPlayer.txt
-#include decorate/MinigunnerPlayer.txt
-#include decorate/GrenadierPlayer.txt
-#include decorate/SniperPlayer.txt
+#include decorate/PlayerClasses.txt
 
 //MISC
 #include decorate/CasingSpawners.txt
@@ -42,3 +40,8 @@
 #include decorate/Cop2.txt
 #include decorate/MinigunMarine.txt
 #include decorate/ShotgunMarine.txt
+
+/*da fare:
+Classi giocatore (decorate)
+P50 (Decorate e animazioni)
+*/
