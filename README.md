@@ -33,12 +33,12 @@ Per spawnare mostri bisogna aprire la console del gioco e usare il commando "sum
    m60marine<br>
    snipermarine<br>
 <h4>E inoltre ho aggiunto dei randomizzatori che funzionano con nemici e armi:<br></h4>
-<h3>Nemici/NPC:<br><h3>
+<h3>Nemici/NPC:<br></h3>
    coprandomizer<br>
    shotgunnerrandomizer<br>
    machinegunnersrandomizer<br>
    civilianrandomizer<br>
-<h3>Armi:<br><h3>
+<h3>Armi:<br></h3>
    shotgunrandomizer<br>
    machinegunsrandomizer<br>
    artiliaryrandomizer<br>
