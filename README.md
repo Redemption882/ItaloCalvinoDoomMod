@@ -44,4 +44,5 @@ Per spawnare mostri bisogna aprire la console del gioco e usare il commando "sum
    artiliaryrandomizer<br>
 <br><h3>Per spawnare armi/NPC utilizzare il comando "summon" nella console di GZDoom/Zandronum (es. "summon glock18spawner").</h3>
 <h1># 4: Come far partire la mod su GZDoom:</h1>
-<h4>Scaricare e trasportare il file "ItaloCalvnoDoomMod-master.zip" sull'icona di GZDoom</h4>
+<h4>Andare in "Releases" e scaricare la versione per il source port che preferite usare (GZDoom/Zandronum)
+   E dopodiche trasportate il file scaricato sull'eseguibile di GZDoom/Zandronum./h4>
