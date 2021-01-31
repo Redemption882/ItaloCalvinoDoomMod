@@ -1,0 +1,168 @@
+ACTOR CustomDoomPlayer : DoomPlayer
+{
+  Player.DisplayName "TestPlayer"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "AA12Clip", 6
+  Player.StartItem "DBSGClip", 2
+  Player.StartItem "AKClip", 15
+  Player.StartItem "M60Clip", 35
+  Player.StartItem "GLClip", 3
+  Player.StartItem "Clip", 50
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+  States
+  {
+  Spawn:
+    PLAY A -1
+    Loop
+  See:
+    PLAY ABCD 4 
+    Loop
+  Missile:
+    PLAY E 12
+    Goto Spawn
+  Melee:
+    PLAY F 6 BRIGHT
+    Goto Missile
+  Pain:
+    PLAY G 4 
+    PLAY G 4 A_Pain
+    Goto Spawn
+  Death:
+    PLAY H 0 A_PlayerSkinCheck("AltSkinDeath")
+  Death1:
+    PLAY H 10
+    PLAY I 10 A_PlayerScream
+    PLAY J 10 A_NoBlocking
+    PLAY KLM 10
+    PLAY N -1
+    Stop
+  XDeath:
+    PLAY O 0 A_PlayerSkinCheck("AltSkinXDeath")
+  XDeath1:
+    PLAY O 5
+    PLAY P 5 A_XScream
+    PLAY Q 5 A_NoBlocking
+    PLAY RSTUV 5
+    PLAY W -1
+    Stop
+  AltSkinDeath:
+    PLAY H 6
+    PLAY I 6 A_PlayerScream
+    PLAY JK 6
+    PLAY L 6 A_NoBlocking
+    PLAY MNO 6
+    PLAY P -1
+    Stop
+  AltSkinXDeath:
+    PLAY Q 5 A_PlayerScream
+    PLAY R 0 A_NoBlocking
+    PLAY R 5 A_SkullPop
+    PLAY STUVWX 5
+    PLAY Y -1
+    Stop
+  }
+}
+
+ACTOR Rifleman : CustomDoomPlayer
+{
+  Player.DisplayName "Rifleman"
+  Player.StartItem "Z_AK47"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "AKClip", 30
+  Player.StartItem "Clip", 50
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+}
+
+ACTOR Shotgunner : CustomDoomPlayer
+{
+  Player.DisplayName "Shotgunner"
+  Player.StartItem "Z_AA12"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "AA12Clip", 12
+  Player.StartItem "Clip", 50
+  Player.StartItem "Shell", 10
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+}
+
+ACTOR Machinegunner : CustomDoomPlayer
+{
+  Player.DisplayName "Machinegunner"
+  Player.StartItem "Z_M60"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "M60Clip", 60
+  Player.StartItem "Clip", 50
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+}
+
+ACTOR Minigunner : CustomDoomPlayer
+{
+  Player.DisplayName "Minigunner"
+  Player.StartItem "Z_Minigun"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "MinigunClip", 100
+  Player.StartItem "Clip", 50
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+}
+
+ACTOR Grenadier : CustomDoomPlayer
+{
+  Player.DisplayName "Grenadier"
+  Player.StartItem "Z_GrenadeLauncher"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "GlClip", 6
+  Player.StartItem "Clip", 50
+  Player.StartItem "RocketAmmo", 8
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+}
+
+ACTOR Sniper : CustomDoomPlayer
+{
+  Player.DisplayName "Sniper"
+  Player.StartItem "Z_SniperRifle"
+  Player.StartItem "Z_Glock18"
+  Player.StartItem "GlockClip", 18
+  Player.StartItem "SniperRifleClip", 10
+  Player.StartItem "Clip", 50
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.WeaponSlot 2, Glock18, P50
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+}

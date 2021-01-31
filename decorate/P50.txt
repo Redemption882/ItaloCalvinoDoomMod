@@ -1,0 +1,121 @@
+ACTOR P50Clip : Ammo
+{
+   +INVENTORY.IGNORESKILL
+   Inventory.MaxAmount 8
+}
+
+ACTOR P50 : Weapon
+{
+   inventory.pickupmessage "You got the P50!"
+   Inventory.PickupSound "weapon/pickup"
+   Weapon.AmmoType1 "P50Clip"
+   Weapon.AmmoGive1 0
+   Weapon.AmmoUse1 1
+   Weapon.AmmoType2 "Clip"
+   Weapon.AmmoGive2 10
+   Weapon.Kickback 40
+   Weapon.BobStyle InverseSmooth
+   Weapon.BobSpeed 2.2
+   Weapon.BobRangeY 0.3
+   Weapon.BobRangeX 0.2
+   Weapon.SelectionOrder 1303
+   Weapon.SlotNumber 2
+   Scale 0.8
+   +NOAUTOFIRE
+   +NOAUTOAIM
+   +INVENTORY.IGNORESKILL
+   +Weapon.Ammo_Optional 
+   +weapon.wimpy_weapon
+   +weapon.noalert
+   States
+   {
+   Ready:
+     P50D A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Loop
+   Deselect:
+	 TNT1 A 0 
+     Goto DeselectAnim
+    DeselectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 GLCK A 1
+	 P50I ABCDEFG 1
+	 Goto DeselectEnd
+   DeselectEnd:
+	 TNT1 AAAAAAAAAAAAAA 00 A_Lower
+     Loop
+   Select:
+	 TNT1 A 1 
+   	 TNT1 AAAAAAAAAAAAAA 00 A_Raise
+     Goto SelectAnim	 
+   SelectAnim:
+	 TNT1 A 0 A_PlaySound ("weapon/inventory")
+	 P50I HGFEDCBAAA 1
+	 P50R DEF 1
+	 P50R G 2
+	 TNT1 A 0 A_PlaySound ("p50/cock")
+	 P50R HIJ 1
+	 Goto Ready
+   Fire:
+      TNT1 A 0 A_JumpIfNoAmmo("NoAmmo")
+	  TNT1 A 0 A_PlaySound ("p50/fire")
+	  P50F A 1
+      P50F B 1 A_FireBullets (2,2,-1,8,"BulletSpark")
+	  TNT1 A 0 A_SetPitch(pitch-0.9)
+	  TNT1 A 0 A_SetAngle(angle+0.6)
+	  TNT1 A 0 BRIGHT A_GunFlash
+	  TNT1 A 0 A_AlertMonsters
+      TNT1 A 0 A_FireCustomMissile("PistolCasingSpawner",0,0,0,0)
+      P50F CDCE 1
+	  P50D A 3
+      Goto Ready
+	AltFire:
+	  P50M ABC 1
+	  P50M D 3
+	  P50M CBA 1
+	  P50D A 1
+	  P50M E 1 A_CustomPunch (7,0,0,"CustomPuff")
+	  P50M FGHI 1
+	  P50M HGFE 1
+	  P50D A 1 A_Refire
+	  Goto Ready
+	Reload:
+	  TNT1 A 0 A_JumpIfInventory("P50Clip", 8, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0
+	  Goto Ready
+	  ReloadWork:
+	  TNT1 A 0 A_PlaySound ("p50/clipout")
+	  P50R ABC 1
+	  TNT1 A 0 A_FireCustomMissile("EmptyClipSpawner",0,0,0,0)
+	  P50R C 14
+	  TNT1 A 0 A_PlaySound ("p50/clipin")
+      P50R CBA 1
+	  P50D A 10 
+	  P50R DEF 1
+	  P50R G 2
+	  TNT1 A 0 A_PlaySound ("p50/cock")
+	  P50R HIJ 1
+	  P50D A 1
+	ReloadLoop:
+	  TNT1 A 0 A_TakeInventory("Clip", 1)
+	  TNT1 A 0 A_GiveInventory("P50Clip",1)
+	  TNT1 A 0 A_JumpIfInventory("P50Clip", 8, "Full")
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadLoop")
+	Goto Full
+	Full:
+      GLCK A 0
+    Goto Ready 
+	NoAmmo:
+      TNT1 A 0 A_JumpIfInventory("P50Clip", 8, 2)
+	  TNT1 A 0 A_JumpIfInventory("Clip", 1, "ReloadWork")
+	  TNT1 A 0 A_PlaySound ("weapon/noammo")
+    Goto Ready 
+	Flash:
+      TNT1 A 4 Bright A_Light1
+      TNT1 A 3 Bright A_Light2
+    Goto LightDone
+	Spawn:
+	  P50P A -1
+      Stop
+	}
+}
