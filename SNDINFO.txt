@@ -1,17 +1,66 @@
 //weapons
 weapon/inventory DSWPNIN3
+$limit weapon/inventory 0
 weapon/noammo NOAMMO1
+$limit weapon/noammo 0
 weapon/pickup DSWPNUP1
+$limit weapon/pickup 0
 weapon/firemode DSBURMO1
+$limit weapon/firemode 0
 
+$limit weapon/meleeswing 0
 $random weapon/meleeswing { MELEESW1 MELEESW2 }
 MELEESW1 MELEESW1
 MELEESW2 MELEESW2
 
+$limit weapon/meleehit 0
 $random weapon/meleehit { MELEEWL1 MELEEWL2 MELEEWL3 }
 MELEEWL1 MELEEWL1 
 MELEEWL2 MELEEWL2
 MELEEWL3 MELEEWL3
+
+//Knife
+$limit knife/swing 0
+$random knife/swing { KNFSWIN1 KNFSWIN2 }
+KNFSWIN1 KNFSWIN1
+KNFSWIN2 KNFSWIN2
+
+$limit fknife/wall 0
+knife/wall KNFWALL1
+
+$limit knife/meleehit 0
+$random knife/meleehit { DSKNHIT1 DSKNHIT2 DSKNHIT3 DSKNHIT4 }
+DSKNHIT1 DSKNHIT1
+DSKNHIT2 DSKNHIT2
+DSKNHIT3 DSKNHIT3 
+DSKNHIT4 DSKNHIT4
+DSKNHIT5 DSKNHIT5
+
+//Combat Fists
+$limit fists/gswing 0
+fists/gswing DSSWING
+$limit fists/swing 0
+$random fists/swing { DSFIFIS1 DSFIFIS2 DSFIFIS3 DSFIFIS4 DSFIFIS5 }
+DSFIFIS1 DSFIFIS1
+DSFIFIS2 DSFIFIS2
+DSFIFIS3 DSFIFIS3
+DSFIFIS4 DSFIFIS4
+DSFIFIS5 DSFIFIS5
+
+$limit fists/wall 0
+$random fists/wall { DSWALL1 DSWALL2 DSWALL3 DSWALL4 }
+DSWALL1 DSWALL1
+DSWALL2 DSWALL2
+DSWALL3 DSWALL3
+DSWALL4 DSWALL4
+
+$limit fists/meleehit 0
+$random fists/meleehit { DSFIFIR1 DSFIFIR2 DSFIFIR3 DSFIFIR4 DSFIFIR5 }
+DSFIFIR1 DSFIFIR1
+DSFIFIR2 DSFIFIR2
+DSFIFIR3 DSFIFIR3 
+DSFIFIR4 DSFIFIR4
+DSFIFIR5 DSFIFIR5
 
 //Shotgun
 pumpshotgun/fire STGFIRE1
@@ -23,6 +72,7 @@ $limit pumpshotgun/cockout 0
 pumpshotgun/shellin SHELLIN1
 
 //aa12
+$limit aa12/fire 0
 aa12/fire DSAA12
 aa12/bolt AA12BOLT
 aa12/clipout AA12OUT
@@ -31,9 +81,13 @@ aa12/clipin2 AA12IN2
 
 //Double-Barreled Shotgun
 dbsg/fire SSGFIR1
+$limit dbsg/fire 0
 dbsg/open SSGOP1
+$limit dbsg/open 0
 dbsg/reload SSGRL1
+$limit dbsg/reload 0
 dbsg/close SSGCL1
+$limit dbsg/close 0
 
 //p50
 p50/fire P50FIRE
@@ -46,6 +100,20 @@ glock18/fire DSGLOCK1
 glock18/cock DSGLKCK2
 glock18/clipin DSGLKIN2
 glock18/clipout DSGLKOU2
+
+//tec9
+tec9/fire TECFIR1
+tec9/clipout TECOUT1
+tec9/clipin TECIN1
+tec9/bolt TECCOC1
+tec9/bolt2 TECCOC2
+
+//Hi-Point Carbine
+hipoint/fire HIPFIR1
+hipoint/clipout GRENREL1
+hipoint/clipin GRENREL2
+hipoint/inv1 HIPINV1
+hipoint/inv2 HIPINV2
 
 //ak47
 ak47/fire AKFIR1
@@ -73,6 +141,10 @@ grenlncr/fire GRENFIR1
 grenlncr/clipout GRENREL1
 grenlncr/clipin GRENREL2
 
+//Hand Grenade
+/*handgren/pin DSGRPIN
+handgren/swing DSGRSWI*/
+
 //Sniper Rifle
 sniper/fire SNIPFIR1
 sniper/clipout GRENREL1
@@ -80,16 +152,23 @@ sniper/clipin GRENREL2
 sniper/cock SNIPCOC1
 sniper/scope SNIPSCP1
 
-//Grenade
+//Grenades
+$limit grenade/explosion 0
 grenade/explosion GRENEXP1
+$limit grenade/bounce 0
 grenade/bounce GRENBN1
+$limit handgren/bounce 0
+handgren/bounce DSGRDROP
+
 
 //CASINGS
+$limit shotguncasing/sfx 0
 $random shotguncasing/sfx { DSSHELL1 DSSHELL2 DSSHELL3 }
 DSSHELL1 DSSHELL1
 DSSHELL2 DSSHELL2
 DSSHELL3 DSSHELL3
 
+$limit riflecasing/sfx 0
 $random riflecasing/sfx { DSCASIN1 DSCASIN2 DSCASIN3 DSCASIN4 DSCASIN5 }
 DSCASIN1 DSCASIN1
 DSCASIN2 DSCASIN2
@@ -97,6 +176,7 @@ DSCASIN3 DSCASIN3
 DSCASIN4 DSCASIN4
 DSCASIN5 DSCASIN5
 
+$limit pistolcasing/sfx 0
 $random pistolcasing/sfx { PSCASIN1 PSCASIN2 PSCASIN3 PSCASIN4 PSCASIN5 PSCASIN6 PSCASIN7 }
 PSCASIN1 PSCASIN1
 PSCASIN2 PSCASIN2
@@ -106,6 +186,7 @@ PSCASIN5 PSCASIN5
 PSCASIN6 PSCASIN6
 PSCASIN7 PSCASIN7
 
+$limit emptyclip/sfx 0
 $random emptyclip/sfx { sclp1 sclp2 sclp3 sclp4 sclp5 sclp6 }
 sclp1 sclp1
 sclp2 sclp2
@@ -115,6 +196,7 @@ sclp5 sclp5
 sclp6 sclp6
 
 //Ricochet
+$limit Ricochet/sfx 0
 $random Ricochet/sfx { RICOCHE1 RICOCHE2 RICOCHE3 RICOCHE4 RICOCHE5 RICOCHE6 RICOCHE7 RICOCHE8 }
 RICOCHE1 RICOCHE1
 RICOCHE2 RICOCHE2
@@ -125,11 +207,12 @@ RICOCHE6 RICOCHE6
 RICOCHE7 RICOCHE7
 RICOCHE8 RICOCHE8
 
-//COPS SOUNDS
+//COPS/ENEMIES SOUNDS
 
 enemy/reload ENMREL
 $limit enemy/reload 0
 
+$limit cop/sight 0
 $random cop/sight { DCOPSIT1  DCOPSIT2  DCOPSIT3   DCOPSIT4   DCOPSIT5   DCOPSIT6   DCOPSIT7  DCOPSIT8  DCOPSIT9 }
 DCOPSIT1	DCOPSIT1	
 DCOPSIT2	DCOPSIT2
@@ -141,6 +224,7 @@ DCOPSIT7	DCOPSIT7
 DCOPSIT8	DCOPSIT8
 DCOPSIT9	DCOPSIT9
 
+$limit cop/death 0
 $random cop/death { DSCOPTH1  DSCOPTH2  DSCOPTH3   DSCOPTH4   DSCOPTH5   DSCOPTH6   DSCOPTH7 }
 DSCOPTH1 DSCOPTH1
 DSCOPTH2 DSCOPTH2
@@ -150,7 +234,7 @@ DSCOPTH5 DSCOPTH5
 DSCOPTH6 DSCOPTH6
 DSCOPTH7 DSCOPTH7
 
-cop/pain DCOPPAIN1
+cop/pain DCOPAIN1
 $limit cop/pain 0
 cop/attack  P50FIRE
 $limit cop/attack 0
@@ -158,9 +242,18 @@ minigunmarine/attack MGNFIR1
 $limit minigunmarine/attack 0
 shotgunmarine/attack STGFIRE1
 $limit shotgunmarine/attack 0
+snipermarine/attack SNIPFIR1
+$limit snipermarine/attack 0
+aa12marine/attack DSAA12
+$limit aa12marine/attack 0
+ssgmarine/attack SSGFIR1
+$limit ssgmarine/attack 0
+m60marine/attack M60FIRE
+$limit m60marine/attack 0
 
 //CIVILIANS SOUNDS
 
+$limit man/alert 0
 $random man/alert { MALERT1 MALERT2 }
 MALERT1 MALERT1
 MALERT2 MALERT2
@@ -168,6 +261,7 @@ MALERT2 MALERT2
 man/active MACTIVE
 $limit man/active 0
 
+$limit man/death 0
 $random man/death { TWAT1 TWAT2 TWAT3 TWAT4 TWAT5 TWAT6 TWAT7 }
 TWAT1 TWAT1
 TWAT2 TWAT2
@@ -177,6 +271,7 @@ TWAT5 TWAT5
 TWAT6 TWAT6
 TWAT7 TWAT7
 
+$limit woman/alert 0
 $random woman/alert { FALERT1 FALERT3 FALERT4 FALERT5 }
 FALERT1 FALERT1
 FALERT3 FALERT3
@@ -184,7 +279,9 @@ FALERT4 FALERT4
 FALERT5 FALERT5
 
 woman/active FACTIVE
+$limit woman/active 0
 
+$limit woman/death 0
 $random woman/death { BITCH1 BITCH2 }
 BITCH1 BITCH1
 BITCH2 BITCH2

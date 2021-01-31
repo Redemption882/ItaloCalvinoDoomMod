@@ -1,6 +1,13 @@
 //Class section
 clearplayerclasses 
-addplayerclass CustomDoomPlayer
+addplayerclass Rifleman
+addplayerclass Shotgunner
+addplayerclass Machinegunner
+addplayerclass Minigunner
+addplayerclass Grenadier
+addplayerclass Sniper
+addplayerclass DylanKlebold
+addplayerclass EricHarris
 
 //Key section
 addkeysection "Custom keys" ItaloCalvinoDoomMod
