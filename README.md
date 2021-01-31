@@ -1,8 +1,9 @@
 # ItaloCalvinoDoomMod
 Mappa mancante ma la mod è funzionante
 # 1: Che source port utilizzare per testare la mod?:
-La mod al momento è compatibile con GZDoom<br>
+La mod al momento è compatibile con GZDoom e Zandronum<br>
 GZDoom: https://zdoom.org/downloads<br>
+Zandronum "https://zandronum.com/download"<br>
 # 2: Come faccio a spawnare oggetti, mostri, ecc...?:
 Per spawnare mostri bisogna aprire la console del gioco e usare il commando "summon nomedelloggetto".<br> 
 (il comando per farlo è disponibile nelle opzioni di GZDoom, nella categoria "Customize Controls ----> Other")
