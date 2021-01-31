@@ -1,0 +1,271 @@
+ACTOR KnifeSpawner : CustomInventory Replaces Chainsaw
+{ 
+   inventory.pickupmessage "You got the Knife!"
+   Inventory.PickupSound "weapon/pickup"
+   States 
+   { 
+   Spawn: 
+   KMIF A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("Knife", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR Glock18Spawner : CustomInventory Replaces Pistol 
+{ 
+   inventory.pickupmessage "You got the Glock 18!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.2
+   States 
+   { 
+   Spawn: 
+   IGLK A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("Glock18", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+ 
+ACTOR P50Spawner : CustomInventory 
+{ 
+   inventory.pickupmessage "You got the P50!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.8
+   States 
+   { 
+   Spawn: 
+   P50P A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("P50", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR AA12Spawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the AA12!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.8
+   States 
+   { 
+   Spawn: 
+   AA12 A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("AA12", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR ShotgunRandomizer : CustomInventory Replaces Shotgun //Randomise weapons between AA12 and PumpShotgun
+{ 
+   States 
+   { 
+   Spawn: 
+   TNT1 A 0 A_Jump(102, "ReplaceAA12")
+   TNT1 A 0 A_Jump(142, "ReplacePumpShotgun")
+   Loop
+  ReplaceAA12:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("AA12Spawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplacePumpShotgun:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("PumpShotgunSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR PumpShotgunSpawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the Shotgun!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.2
+   States 
+   { 
+   Spawn: 
+   SHOT A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("PumpShotgun", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR DBSGSpawner : CustomInventory Replaces SuperShotgun
+{ 
+   inventory.pickupmessage "You got the Double-barreled Shotgun!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.1
+   States 
+   { 
+   Spawn: 
+   SSGN A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("DBSG", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR AK47Spawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the AK47!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.0
+   States 
+   { 
+   Spawn: 
+   AK4I A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("AK47", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR M60Spawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the M60!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.6
+   States 
+   { 
+   Spawn: 
+   M60I A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("M60", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR MachinegunsRandomizer : CustomInventory Replaces Chaingun //Randomise weapons between AK47/Minigun/M60
+{ 
+   States 
+   { 
+   Spawn: 
+   TNT1 A 0 A_Jump(92, "ReplaceMinigun")
+   TNT1 A 0 A_Jump(162, "ReplaceAK47")
+   TNT1 A 0 A_Jump(142, "ReplaceM60")
+   Loop
+  ReplaceAK47:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("AK47Spawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceMinigun:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("MinigunSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceM60:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("M60Spawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR MinigunSpawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the Minigun!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.0
+   States 
+   { 
+   Spawn: 
+   MINI A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("Minigun", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR ArtiliaryRandomizer : CustomInventory Replaces RocketLauncher //Randomise weapons between SniperRifle/GrenadeLauncher
+{ 
+   States 
+   { 
+   Spawn: 
+   TNT1 A 0 A_Jump(162, "ReplaceGL")
+   TNT1 A 0 A_Jump(102, "ReplaceSniper")
+   Loop
+  ReplaceGL:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("GLSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceSniper:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("SniperRifleSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR GLSpawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the Grenade Launcher!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 1.0
+   States 
+   { 
+   Spawn: 
+   GLMM A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("GrenadeLauncher", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}
+
+ACTOR SniperRifleSpawner : CustomInventory
+{ 
+   inventory.pickupmessage "You got the Sniper Rifle!"
+   Inventory.PickupSound "weapon/pickup"
+   Scale 0.7
+   States 
+   { 
+   Spawn: 
+   SNIP A -1
+   Stop
+   Pickup:
+   TNT1 A 0 A_GiveInventory("SniperRifle", 1)
+   Goto Spawn
+   TNT1 A 0
+   Fail
+   }
+}

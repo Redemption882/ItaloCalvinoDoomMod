@@ -1,0 +1,134 @@
+ACTOR DylanKlebold : DoomPlayer //Dylan
+{
+  Speed 1
+  Health 100
+  Radius 16
+  Height 59
+  CameraHeight 154
+  Mass 100
+  PainChance 255
+  YScale 0.68
+  XScale 0.75
+  Player.DisplayName "Dylan Klebold"
+  Player.StartItem "DBSG"
+  Player.StartItem "Tec9"
+  Player.StartItem "Knife"
+  Player.StartItem "TecClip", 21
+  Player.StartItem "DBSGClip", 2
+  Player.StartItem "Clip", 80
+  Player.StartItem "Shell", 18
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.StartItem "Action_GrenThrow", 1
+  Player.StartItem "Action_GrenThrowCancel", 1
+  Player.JumpZ "9.3"
+  Player.ViewHeight "49"
+  Player.WeaponSlot 1, CombatFists, Knife
+  Player.WeaponSlot 2, Glock18, P50, Tec9, HiPointCarbine
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+  Player.WeaponSlot 6, SniperRifle, HandGrenade
+  States
+  {
+  Spawn:
+    DYLN A -1
+    Loop
+  See:
+    DYLN ABCDE 4 
+    Loop
+  Missile:
+    DYLN G 12
+    Goto Spawn
+  Melee:
+    DYLN G 6 BRIGHT
+    Goto Missile
+  Pain:
+    DYLN F 4 
+    DYLN F 4 A_Pain
+    Goto Spawn
+  Death:
+    DYLN H 5
+    DYLN I 5 A_PlayerScream
+    DYLN J 5 A_NoBlocking
+    DYLN K 5
+	DYLN L 5
+	DYLN M -1
+    Stop
+  XDeath:
+    DYLN H 5
+    DYLN I 5 A_PlayerScream
+    DYLN J 5 A_NoBlocking
+    DYLN K 5
+	DYLN L 5
+	DYLN M -1
+    Stop
+  }
+}
+
+ACTOR EricHarris : DoomPlayer //Eric
+{
+  Speed 1
+  Health 100
+  Radius 16
+  Height 54
+  Mass 100
+  PainChance 255
+  YScale 0.62
+  XScale 0.68
+  Player.DisplayName "Eric Harris"
+  Player.StartItem "PumpShotgun"
+  Player.StartItem "HiPointCarbine"
+  Player.StartItem "Knife"
+  Player.StartItem "ShotgunClip", 8
+  Player.StartItem "HiPointClip", 15
+  Player.StartItem "Clip", 70
+  Player.StartItem "Shell", 16
+  Player.JumpZ "7.6"
+  Player.ViewHeight "38"
+  Player.StartItem "Action_FireMode", 1
+  Player.StartItem "Action_FireModeCancel", 1
+  Player.StartItem "Action_GrenThrow", 1
+  Player.StartItem "Action_GrenThrowCancel", 1
+  Player.WeaponSlot 1, CombatFists, Knife
+  Player.WeaponSlot 2, Glock18, P50, Tec9, HiPointCarbine
+  Player.WeaponSlot 3, AA12, DBSG, PumpShotgun
+  Player.WeaponSlot 4, AK47, M60, Minigun
+  Player.WeaponSlot 5, GrenadeLauncher
+  Player.WeaponSlot 6, SniperRifle, HandGrenade
+  States
+  {
+  Spawn:
+    ERIC A -1
+    Loop
+  See:
+    ERIC ABCDE 4 
+    Loop
+  Missile:
+    ERIC G 12
+    Goto Spawn
+  Melee:
+    ERIC G 6 BRIGHT
+    Goto Missile
+  Pain:
+    ERIC F 4 
+    ERIC F 4 A_Pain
+    Goto Spawn
+  Death:
+    ERIC H 5
+    ERIC I 5 A_PlayerScream
+    ERIC J 5 A_NoBlocking
+    ERIC K 5
+	ERIC L 5
+	ERIC M -1
+    Stop
+  XDeath:
+    ERIC H 5
+    ERIC I 5 A_PlayerScream
+    ERIC J 5 A_NoBlocking
+    ERIC K 5
+	ERIC L 5
+	ERIC M -1
+    Stop
+  }
+}

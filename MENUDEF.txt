@@ -1,0 +1,5 @@
+ListMenu "PlayerclassMenu"
+{
+	StaticTextCentered 160, 5, "Choose a Class"
+	Position 21, 30
+}

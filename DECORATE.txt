@@ -1,0 +1,46 @@
+
+//WEAPONS
+#include decorate/weapons/CombatFists.txt
+#include decorate/weapons/Knife.txt
+#include decorate/weapons/Glock18.txt
+#include decorate/weapons/P50.txt
+#include decorate/weapons/Tec9.txt
+#include decorate/weapons/AA12.txt
+#include decorate/weapons/PumpShotgun.txt
+#include decorate/weapons/DBSG.txt
+#include decorate/weapons/AK47.txt
+#include decorate/weapons/M60.txt
+#include decorate/weapons/Minigun.txt
+#include decorate/weapons/GrenadeLauncher.txt
+#include decorate/weapons/SniperRifle.txt
+#include decorate/weapons/HiPointCarbine.txt
+
+//PLAYER CLASSES & MISC
+#include decorate/misc/StandardClasses.txt //Normal Classes
+#include decorate/misc/SpecialClasses.txt //Eric & Dylan
+#include decorate/misc/Projectiles.txt
+#include decorate/misc/Spark&Puff.txt
+#include decorate/misc/Tokens.txt
+
+//SPAWNERS & RANDOMIZERS
+#include decorate/spawners/CasingSpawners.txt
+#include decorate/spawners/WeaponSpawners.txt
+#include decorate/spawners/EnemyRandomizers.txt
+
+
+//CIVILIANS
+#include decorate/enemies/Civilian1.txt
+#include decorate/enemies/Civilian2.txt
+#include decorate/enemies/Civilian3.txt
+#include decorate/enemies/Civilian4.txt
+#include decorate/enemies/Capezio.txt
+
+//ENEMIES
+#include decorate/enemies/Cop1.txt
+#include decorate/enemies/Cop2.txt
+#include decorate/enemies/MinigunMarine.txt
+#include decorate/enemies/M60Marine.txt
+#include decorate/enemies/ShotgunMarine.txt
+#include decorate/enemies/AA12Marine.txt
+#include decorate/enemies/SSGMarine.txt
+#include decorate/enemies/SniperMarine.txt
