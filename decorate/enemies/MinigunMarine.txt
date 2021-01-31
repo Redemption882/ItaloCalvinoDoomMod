@@ -1,0 +1,74 @@
+ACTOR MinigunMarine
+{
+  Health 31
+  Radius 20
+  Height 56
+  Mass 100
+  scale 1.0
+  Speed 8
+  PainChance 190
+  Monster
+  +FLOORCLIP
+  +NOINFIGHTING
+  SeeSound "cop/sight"
+  PainSound "cop/pain"
+  AttackSound "minigunmarine/attack"
+  DeathSound "cop/death"
+  Obituary "%o was shot by a minigun marine."
+  Dropitem "Minigun"
+  States
+  {
+  Spawn:
+   MGR1 A 10 A_Look
+   Loop
+  See:
+   MGR1 AABBCCDD 3 A_Chase
+   Loop
+  Missile:
+    MGR1 E 5 A_FaceTarget
+	MGR1 F 2 bright
+    TNT1 A 0 A_CustomBulletAttack(13, 2, 1, 2 * 3, "BulletSpark", 0, CBAF_NORANDOM)
+	TNT1 A 0 A_SpawnItem ("RifleCasingSpawner", 0, 30,0)
+    MGR1 E 3 A_FaceTarget
+	MGR1 F 2 bright
+    TNT1 A 0 A_CustomBulletAttack(13, 2, 1, 2 * 3, "BulletSpark", 0, CBAF_NORANDOM)
+	TNT1 A 0 A_SpawnItem ("RifleCasingSpawner", 0, 30,0)
+    MGR1 E 3 A_FaceTarget
+	MGR1 F 2 bright
+    TNT1 A 0 A_CustomBulletAttack(13, 2, 1, 2 * 3, "BulletSpark", 0, CBAF_NORANDOM)
+	TNT1 A 0 A_SpawnItem ("RifleCasingSpawner", 0, 30,0)
+    MGR1 E 3 A_FaceTarget
+	MGR1 F 2 bright
+    TNT1 A 0 A_CustomBulletAttack(13, 2, 1, 2 * 3, "BulletSpark", 0, CBAF_NORANDOM)
+	TNT1 A 0 A_SpawnItem ("RifleCasingSpawner", 0, 30,0)
+	MGR1 E 5 A_FaceTarget
+    Goto See
+  Pain:
+    MGR1 G 3
+    MGR1 G 3 A_Pain
+    Goto See
+ Death:
+    MGR1 H 5
+    MGR1 I 5 A_Scream
+    MGR1 J 5 A_NoBlocking
+    MGR1 K 5
+    MGR1 L 5
+	MGR1 M 5
+	MGR1 N -1
+    Stop
+  XDeath:
+    MGR2 I 5
+    MGR2 J 5 A_XScream
+    MGR2 K 5 A_NoBlocking
+    MGR2 L 5
+    MGR2 M 5
+	MGR2 N 5
+	MGR2 O 5
+	MGR2 P -1
+    Stop
+  Raise:
+    MGR1 L 5
+    MGR1 KJIH 5
+    Goto See
+  }
+}

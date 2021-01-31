@@ -1,0 +1,2 @@
+STARTUPTITLE = "Italo Calvino High School Massacre"
+STARTUPCOLORS = "FF0000", "000000"

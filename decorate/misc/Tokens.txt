@@ -1,0 +1,84 @@
+
+//Player
+Actor Glock18BurstFire : Inventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1 -INVBAR}
+
+Actor Tec9BurstFire : Inventory
+{ Inventory.Amount 2 Inventory.MaxAmount 2 -INVBAR}
+
+Actor AKBurstFire : Inventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1 -INVBAR}
+
+Actor M60BurstFire : Inventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1 -INVBAR}
+
+Actor DBSGFire2 : Inventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1 -INVBAR}
+
+Actor FireSel : Inventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1 -INVBAR}
+
+Actor GrenFire : Inventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1 -INVBAR}
+
+Actor HoldFist : Inventory
+{ Inventory.Amount 0 Inventory.MaxAmount 3 -INVBAR}
+
+Actor GrenadeTime : Inventory
+{ Inventory.Amount 6 Inventory.MaxAmount 6 -INVBAR}
+
+Actor HoldKnife : Inventory
+{ Inventory.Amount 0 Inventory.MaxAmount 3 -INVBAR}
+
+Actor StrongFist : Inventory
+{ Inventory.Amount 0 Inventory.MaxAmount 2 -INVBAR}
+
+ACTOR ScopeZoom : Inventory
+{ Inventory.Amount 2 Inventory.MaxAmount 2 -INVBAR}
+
+ACTOR Action_FireMode : CustomInventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1-INVBAR States { Use: TNT1 A 0 A_GiveInventory("FireSel",1) Fail }}
+
+ACTOR Action_FireModeCancel : CustomInventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1-INVBAR States { Use: TNT1 A 0 A_TakeInventory("FireSel",1) Fail }}
+
+ACTOR Action_GrenThrow : CustomInventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1-INVBAR States { Use: TNT1 A 0 A_GiveInventory("GrenFire",1) Fail }}
+
+ACTOR Action_GrenThrowCancel : CustomInventory
+{ Inventory.Amount 1 Inventory.MaxAmount 1-INVBAR States { Use: TNT1 A 0 A_TakeInventory("GrenFire",1) Fail }}
+
+//Enemies
+//Enemy Inventory Clips
+Actor Cop1Clip : Inventory
+{ Inventory.Amount 6 Inventory.MaxAmount 6 -INVBAR}
+
+Actor Cop2Clip : Inventory
+{ Inventory.Amount 10 Inventory.MaxAmount 10 -INVBAR}
+
+Actor AA12MarineClip : Inventory
+{ Inventory.Amount 12 Inventory.MaxAmount 12 -INVBAR}
+
+Actor SSGMarineClip : Inventory
+{ Inventory.Amount 2 Inventory.MaxAmount 2 -INVBAR}
+
+Actor SniperMarineClip : Inventory
+{ Inventory.Amount 10 Inventory.MaxAmount 10 -INVBAR}
+
+//Enemy Ammo Reserve
+Actor Cop1ReloadCounter : Inventory
+{ Inventory.Amount 7 Inventory.MaxAmount 7 -INVBAR}
+
+Actor Cop2ReloadCounter : Inventory
+{ Inventory.Amount 5 Inventory.MaxAmount 5 -INVBAR}
+
+Actor AA12MarineReloadCounter : Inventory
+{ Inventory.Amount 5 Inventory.MaxAmount 5 -INVBAR}
+
+Actor SSGMarineReloadCounter : Inventory
+{ Inventory.Amount 20 Inventory.MaxAmount 20 -INVBAR}
+
+Actor SniperMarineReloadCounter : Inventory
+{ Inventory.Amount 5 Inventory.MaxAmount 5 -INVBAR}
+
+

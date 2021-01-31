@@ -1,0 +1,36 @@
+ACTOR Civilian4
+{
+  Health 12
+  PainChance 200
+  Speed 8
+  Radius 20
+  Height 56
+  Monster
+  scale 1.0
+  +FRIGHTENED
+  +DROPOFF
+  MaxStepHeight 55
+  MaxDropoffHeight 32
+  SeeSound "man/alert"
+  ActiveSound "man/active"
+  DeathSound "man/death"
+  States
+  {
+  Spawn:
+   WEAS A 10 a_look
+   Loop
+  See:
+    WEAS ABCD 3 a_chase
+    Loop
+  Pain:
+    Weas g 3
+    weas g 3 A_Pain
+    Goto see
+  Death:
+    WEAS h 5 a_die
+	weas J 5 A_scream
+    weas k 5 A_Noblocking
+    weas l -1
+    Stop
+  }
+}

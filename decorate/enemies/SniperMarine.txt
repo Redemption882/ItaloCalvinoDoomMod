@@ -1,0 +1,78 @@
+ACTOR SniperMarine Replaces Revenant
+{
+  Health 40
+  Radius 20
+  Height 56
+  Mass 100
+  scale 1.0
+  Speed 8
+  PainChance 190
+  Monster
+  +FLOORCLIP
+  +NOINFIGHTING
+  SeeSound "cop/sight"
+  PainSound "cop/pain"
+  AttackSound "snipermarine/attack"
+  DeathSound "cop/death"
+  Obituary "%o was shot by a sniper marine."
+  Dropitem "SniperRifle"
+  States
+  {
+  Spawn:
+   TNT1 A 0 A_TakeInventory("SniperMarineClip", 10)
+   TNT1 A 0 A_TakeInventory("SniperMarineReloadCounter", 5)
+   TNT1 A 0 A_GiveInventory("SniperMarineClip", random(2,5))
+   TNT1 A 0 A_GiveInventory("SniperMarineReloadCounter", random(2,4))
+   ZSNP A 10 A_Look
+   Loop
+  See:
+   TNT1 A 0 A_JumpIfInventory("SniperMarineClip", 10, "Reload")
+   ZSNP AABBCCDD 3 A_Chase
+   Loop
+  Missile:
+    TNT1 A 0 A_JumpIfInventory("SniperMarineReloadCounter", 5, "Missile_NoAmmo")
+    TNT1 A 0 A_GiveInventory("SniperMarineClip", 1)
+    ZSNP E 5 A_FaceTarget
+	ZSNP F 5 bright
+    TNT1 A 0 A_CustomBulletAttack(13, 2, 1, 5 * 3, "BulletSpark", 0, CBAF_NORANDOM)
+	TNT1 A 0 A_SpawnItem ("RifleCasingSpawner", 0, 30,0)
+    ZSNP E 5
+    Goto See
+  Missile_NoAmmo:
+	TNT1 A 0 A_TakeInventory("SniperMarineClip", 10)
+    ZSNP E 5 A_FaceTarget
+    TNT1 A 0 A_PlaySound ("weapon/noammo")
+    ZSNP E 5
+    Goto See
+  Reload:
+    TNT1 A 0 A_GiveInventory("SniperMarineReloadCounter", 1)
+    TNT1 A 0 A_JumpIfInventory("SniperMarineReloadCounter", 5, "Missile_NoAmmo")
+	TNT1 A 0 A_TakeInventory("SniperMarineClip", 10)
+    TNT1 A 0 A_PlaySound("enemy/reload")
+	TNT1 A 0 A_SpawnItem ("EmptyClipSpawner", 0,30,0)
+    ZSNP A 8
+	Goto See
+  Pain:
+    ZSNP G 3
+    ZSNP G 3 A_Pain
+    Goto See
+ Death:
+    ZSNP H 5
+    ZSNP I 5 A_Scream
+    ZSNP J 5 A_NoBlocking
+    ZSNP K 5
+    ZSNP L -1
+    Stop
+  XDeath:
+    ZSNP O 5
+    ZSNP P 5 A_XScream
+    ZSNP Q 5 A_NoBlocking
+	POSS PQRST 5
+    POSS U -1
+    Stop
+  Raise:
+    ZSNP L 5
+    ZSNP KJIH 5
+    Goto See
+  }
+}

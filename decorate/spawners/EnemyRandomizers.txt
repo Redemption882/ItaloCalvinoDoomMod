@@ -1,0 +1,115 @@
+ACTOR CopRandomizer Replaces ZombieMan
+{
+  States
+  {
+  Spawn:
+   TNT1 A 0 A_Jump(162, "ReplaceCop1")
+   TNT1 A 0 A_Jump(142, "ReplaceCop2")
+   Loop
+  ReplaceCop1:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Cop1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceCop2:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Cop2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+  }
+}
+
+ACTOR ShotgunnerRandomizer Replaces ShotgunGuy
+{
+  States
+  {
+  Spawn:
+   TNT1 A 0 A_Jump(222, "ReplaceShotgunMarine")
+   TNT1 A 0 A_Jump(102, "ReplaceAA12Marine")
+   TNT1 A 0 A_Jump(122, "ReplaceSSGMarine")
+   Loop
+  ReplaceAA12Marine:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("AA12Marine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceSSGMarine:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("SSGMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceShotgunMarine:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("ShotgunMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+  }
+}
+
+ACTOR MachinegunnersRandomizer Replaces ChaingunGuy
+{
+  States
+  {
+  Spawn:
+   TNT1 A 0 A_Jump(162, "ReplaceM60Marine")
+   TNT1 A 0 A_Jump(142, "ReplaceMinigunMarine")
+   Loop
+  ReplaceM60Marine:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("M60Marine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceMinigunMarine:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("MinigunMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+  }
+}
+
+ACTOR CivilianRandomizer Replaces DoomImp
+{
+  States
+  {
+  Spawn:
+   TNT1 A 0 A_Jump(142, "ReplaceCivilian2")
+   TNT1 A 0 A_Jump(102, "ReplaceCivilian3")
+   TNT1 A 0 A_Jump(162, "ReplaceCivilian4")
+   TNT1 A 0 A_Jump(122, "ReplaceCivilian1")
+   TNT1 A 0 A_Jump(122, "ReplaceCapezio")
+   Loop
+  ReplaceCapezio:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Capezio",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceCivilian1:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Civilian1",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceCivilian2:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Civilian2",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceCivilian3:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Civilian3",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+  ReplaceCivilian4:
+   TNT1 A 0 A_ChangeFlag("THRUACTORS", 1)
+   TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
+   TNT1 A 0 A_SpawnItemEx ("Civilian4",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION | SXF_TRANSFERAMBUSHFLAG | SXF_TRANSFERPOINTERS ,0, tid)
+   Stop
+   TNT1 A 0
+   Fail
+  }
+}
